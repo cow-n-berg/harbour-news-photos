@@ -13,8 +13,8 @@ void Downloader::getPhotos()
     // Group all Regular Expressions together for future changes
     // Level 1: the section
     QString regExpSection = '<section id="nieuws_in_beeld">(.*)<\\/section>';
-    // Level 2: 10 Photos
-    QString regExpPhoto   = '<figure >(.*)<\\/figure>';
+    // Level 2: 10 Photos, RegExp containing *? as the lazy (non greedy) form of *.
+    QString regExpPhoto   = '<figure >(.*?)<\\/figure>';
     // Level 3: Information for each photo
     QString regExpJpgFile = 'src="([^"]*)"';
     QString regExpTitle   = 'class="caption-title">([^<]*)<';
@@ -72,9 +72,24 @@ void Downloader::getPhotos()
             QRegularExpression ra(regExpJpgFile);
             QRegularExpressionMatch matcha = ra.globalMatch(photo);
             if (matcha.hasMatch()) {
-                QString jpg = matcha.captured(0);
-                // Construct JSON
+                QString jpgUrl = matcha.captured(0);
+
                 // Download jpg
+                request.setUrl(QUrl(jpgUrl));
+                QNetworkReply *reply = manager->get(request);
+                QPixmap jpgPix;
+                jpgPix.loadFromData(reply->readAll());
+
+                // Construct JSON
+                QJsonObject photo
+                {
+                    {"jpgPix",  jpgPix},
+                    {"title",   title},
+                    {"caption", caption},
+                    {"source",  source}
+                };
+                photoArray->insert(photo);
+
             }
 
         }
