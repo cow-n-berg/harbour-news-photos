@@ -18,6 +18,8 @@ class Downloader : public QObject
 public:
     explicit Downloader(QObject *parent = 0);
 
+    QString getUrls();
+
     QString getPhotos();
 
 };

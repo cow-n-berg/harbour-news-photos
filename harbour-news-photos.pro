@@ -15,7 +15,8 @@ TARGET = harbour-news-photos
 CONFIG += sailfishapp
 
 SOURCES += src/harbour-news-photos.cpp \
-    src/downloader.cpp
+    src/downloader.cpp \
+    src/qjsonmodel.cpp
 
 DISTFILES += qml/harbour-news-photos.qml \
     qml/cover/CoverPage.qml \
@@ -41,7 +42,8 @@ SAILFISHAPP_ICONS = 86x86 108x108 128x128 172x172
 #TRANSLATIONS += translations/harbour-news-photos-de.ts
 
 HEADERS += \
-    src/downloader.h
+    src/downloader.h \
+    src/qjsonmodel.h
 
 QT += network
 QT += core

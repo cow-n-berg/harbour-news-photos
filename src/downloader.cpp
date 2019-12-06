@@ -83,6 +83,7 @@ void Downloader::getPhotos()
                 // Construct JSON
                 QJsonObject photo
                 {
+                    {"jpgUrl",  jpgUrl},
                     {"jpgPix",  jpgPix},
                     {"title",   title},
                     {"caption", caption},
