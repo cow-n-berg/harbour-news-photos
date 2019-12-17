@@ -2,10 +2,24 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 
 CoverBackground {
-    Label {
-        id: label
+    Column {
+        visible: true
+        spacing: Theme.paddingLarge
+
         anchors.centerIn: parent
-        text: qsTr("News Photos")
+
+        Label {
+            text: qsTr("News Photos")
+            color: Theme.highlightColor
+        }
+
+        Image {
+            width: parent.width
+            height: parent.width / sourceSize.width * sourceSize.height
+            fillMode: Image.PreserveAspectCrop
+            source: Qt.resolvedUrl("../images/img01.jpg")
+            anchors.horizontalCenter: parent.horizontalCenter
+        }
     }
 
     CoverActionList {
@@ -14,7 +28,7 @@ CoverBackground {
         CoverAction {
             iconSource: "image://theme/icon-cover-refresh"
             onTriggered: {
-                getPhotos()
+//                getPhotos()
                 firstPage.activate()
             }
         }

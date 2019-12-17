@@ -1,10 +1,12 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import "../components"
 
 Page {
     id: firstPage
 
     // The effective value will be restricted by ApplicationWindow.allowedOrientations
+//    allowedOrientations: Orientation.Landscape
     allowedOrientations: Orientation.All
 
     // To enable PullDownMenu, place our content in a SilicaFlickable
@@ -13,12 +15,22 @@ Page {
         anchors.fill: parent
 
         // PullDownMenu and PushUpMenu must be declared in SilicaFlickable, SilicaListView or SilicaGridView
-        // PullDownMenu {
-        //     MenuItem {
-        //         text: qsTr("Vernieuwen")
-        //         onClicked: pageStack.push(Qt.resolvedUrl("SecondPage.qml"))
-        //     }
-        // }
+        PullDownMenu {
+            MenuItem {
+                text: qsTr("About")
+                onClicked: pageStack.push(Qt.resolvedUrl("AboutPage.qml"))
+            }
+            MenuItem {
+                text: qsTr("Settings")
+                onClicked: pageStack.push(Qt.resolvedUrl("SettingsPage.qml"))
+            }
+            MenuItem {
+                text: qsTr("Refresh")
+                onClicked: {
+//                    feedListModel.reload
+                }
+            }
+        }
 
         // Tell SilicaFlickable the height of its content.
         contentHeight: column.height
@@ -29,11 +41,16 @@ Page {
             id: column
 
             width: page.width
+            height: page.height
             spacing: Theme.paddingLarge
-            Label {
-                width: parent.width
-                font.pixelSize: Theme.fontSizeSmall
-                wrapMode: Text.WordWrap
+
+//            PageHeader {
+//                title: "UI Template"
+//            }
+            Image {
+                fillMode: Image.Stretch
+                source: Qt.resolvedUrl("../images/img01.jpg")
+                anchors.horizontalCenter: parent.horizontalCenter
             }
         }
     }

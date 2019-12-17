@@ -24,7 +24,7 @@
     </message>
 </context>
 <context>
-    <name>AboutPage</name>
+    <name>SecondPage</name>
     <message>
         <source>Nested Page</source>
         <translation type="unfinished"></translation>

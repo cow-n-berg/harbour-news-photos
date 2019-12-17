@@ -15,8 +15,7 @@ TARGET = harbour-news-photos
 CONFIG += sailfishapp
 
 SOURCES += src/harbour-news-photos.cpp \
-    src/downloader.cpp \
-    src/qjsonmodel.cpp
+    src/photomodel.cpp
 
 DISTFILES += qml/harbour-news-photos.qml \
     qml/cover/CoverPage.qml \
@@ -31,6 +30,9 @@ DISTFILES += qml/harbour-news-photos.qml \
 
 SAILFISHAPP_ICONS = 86x86 108x108 128x128 172x172
 
+DEFINES += \
+    APP_VERSION=\"\\\"$${VERSION}\\\"\" \
+
 # to disable building translations every time, comment out the
 # following CONFIG line
 #CONFIG += sailfishapp_i18n
@@ -39,11 +41,10 @@ SAILFISHAPP_ICONS = 86x86 108x108 128x128 172x172
 # planning to localize your app, remember to comment out the
 # following TRANSLATIONS line. And also do not forget to
 # modify the localized app name in the the .desktop file.
-#TRANSLATIONS += translations/harbour-news-photos-de.ts
+TRANSLATIONS += translations/harbour-news-photos-nl.ts
 
 HEADERS += \
-    src/downloader.h \
-    src/qjsonmodel.h
+    src/photomodel.h
 
 QT += network
 QT += core
