@@ -15,7 +15,8 @@ TARGET = harbour-news-photos
 CONFIG += sailfishapp
 
 SOURCES += src/harbour-news-photos.cpp \
-    src/photomodel.cpp
+#    src/photomodel.cpp \
+    src/demomodel.cpp
 
 DISTFILES += qml/harbour-news-photos.qml \
     qml/cover/CoverPage.qml \
@@ -44,7 +45,8 @@ DEFINES += \
 TRANSLATIONS += translations/harbour-news-photos-nl.ts
 
 HEADERS += \
-    src/photomodel.h
+#    src/photomodel.h \
+    src/demomodel.h
 
 QT += network
 QT += core

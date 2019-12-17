@@ -134,15 +134,15 @@ Page {
             Label {
                 id: codeLabel
                 width: parent.width - 2*Theme.paddingLarge
-                text: "Test"
-//                text: qsTr("The source code is available at
-//                       <br/><a href='%1'>%2</a>
-//                       <br/>You can contact me for any remarks,
-//                       <br/>bugs, feature requests, ideas,...
-//                       <br/>
-//                       <br/>This app was inspired by Daily Comics,
-//                       <br/>by Damien Tardy-Panis. I did use some
-//                       <br/>of his code to start with.").arg(constants.repoGithub).arg(constants.repoGithub)
+//                text: "Test"
+                text: qsTr("The source code is available at
+                       <br/><a href='%1'>%2</a>
+                       <br/>You can contact me for any remarks,
+                       <br/>bugs, feature requests, ideas,...
+                       <br/>
+                       <br/>This app was inspired by Daily Comics,
+                       <br/>by Damien Tardy-Panis. I did use some
+                       <br/>of his code to start with.").arg(constants.repoGithub).arg(constants.repoGithub)
                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                 font.pixelSize: Theme.fontSizeExtraSmall
                 horizontalAlignment: Text.AlignHCenter

@@ -32,19 +32,12 @@ Dialog {
         anchors.fill: parent
         contentHeight: column.height + Theme.paddingLarge
 
-//        contentWidth: parent.width
-//        contentHeight: pageHeader.height + contentColumn.height + Theme.paddingLarge
-//        flickableDirection: Flickable.VerticalFlick
-
         VerticalScrollDecorator {}
 
         Column {
             id: column
             width: parent.width
             spacing: Theme.paddingLarge
-
-//            spacing: 10
-//            anchors.fill: parent
 
             DialogHeader {
                 title: "Settings"
@@ -56,7 +49,7 @@ Dialog {
 
             TextField {
                 focus: true
-                id: urlNewsSite
+                id: newsSite
                 width: parent.width
                 label: "URL News Site"
                 text: newsSiteURL
@@ -136,15 +129,16 @@ Dialog {
             }
             Button {
                 text: "Reset all Settings"
+                anchors.horizontalCenter: parent.horizontalCenter
                 onClicked: {
-                    resetPhoto()
-                    urlNewsSite.text = newsSiteURL
-                    reSection.text   = sectionRE
-                    rePhoto.text     = photoRE
-                    reJpg.text       = jpgRE
-                    reTitle.text     = titleRE
-                    reCaption.text   = captionRE
-                    reSource.text    = sourceRE
+//                    resetRegExp()
+                    newsSite.text  = newsSiteURL
+                    reSection.text = sectionRE
+                    rePhoto.text   = photoRE
+                    reJpg.text     = jpgRE
+                    reTitle.text   = titleRE
+                    reCaption.text = captionRE
+                    reSource.text  = sourceRE
                 }
             }
         }

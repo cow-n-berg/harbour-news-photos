@@ -28,29 +28,30 @@
   SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#ifndef PHOTOMODEL_H
-#define PHOTOMODEL_H
+#ifndef DEMOMODEL_H
+#define DEMOMODEL_H
 
 #include <QAbstractListModel>
 
-class PhotoModel : public QAbstractListModel
+class DemoModel : public QAbstractListModel
 {
     Q_OBJECT
 public:
+    enum DemoRoles {
+        NameRole = Qt::UserRole + 1,
+    };
 
-    QJsonArray photoArray;
-    QString newsSiteURL;
-    QString sectionRE;
-    QString photoRE;
-    QString jpgRE;
-    QString titleRE;
-    QString captionRE;
-    QString sourceRE;
+    explicit DemoModel(QObject *parent = 0);
 
-    Q_INVOKABLE void resetRegExp();
-    Q_INVOKABLE void getPhotos();
+    virtual int rowCount(const QModelIndex&) const { return backing.size(); }
+    virtual QVariant data(const QModelIndex &index, int role) const;
+
+    QHash<int, QByteArray> roleNames() const;
+
+    Q_INVOKABLE void activate(const int i);
 
 private:
     QVector<QString> backing;
 };
-#endif // PHOTOMODEL_H
+
+#endif // DEMOMODEL_H

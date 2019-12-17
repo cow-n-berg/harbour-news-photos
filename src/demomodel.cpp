@@ -28,29 +28,44 @@
   SOFTWARE, EVEN IF ADVISED OF THE POSSIBILITY OF SUCH DAMAGE.
 */
 
-#ifndef PHOTOMODEL_H
-#define PHOTOMODEL_H
+#include "demomodel.h"
 
-#include <QAbstractListModel>
-
-class PhotoModel : public QAbstractListModel
+DemoModel::DemoModel(QObject *parent) :
+    QAbstractListModel(parent)
 {
-    Q_OBJECT
-public:
+    backing << "sea cow" << "platypus" << "axolotl" << "quokka" << "pitahui" << "jerboa";
+}
 
-    QJsonArray photoArray;
-    QString newsSiteURL;
-    QString sectionRE;
-    QString photoRE;
-    QString jpgRE;
-    QString titleRE;
-    QString captionRE;
-    QString sourceRE;
+QHash<int, QByteArray> DemoModel::roleNames() const {
+    QHash<int, QByteArray> roles;
+    roles[NameRole] = "name";
+    return roles;
+}
 
-    Q_INVOKABLE void resetRegExp();
-    Q_INVOKABLE void getPhotos();
 
-private:
-    QVector<QString> backing;
-};
-#endif // PHOTOMODEL_H
+QVariant DemoModel::data(const QModelIndex &index, int role) const {
+    if(!index.isValid()) {
+        return QVariant();
+    }
+    if(role == NameRole) {
+        return QVariant(backing[index.row()]);
+    }
+    return QVariant();
+}
+
+void DemoModel::activate(const int i) {
+    if(i < 0 || i >= backing.size()) {
+        return;
+    }
+    QString value = backing[i];
+
+    // Remove the value from the old location.
+    beginRemoveRows(QModelIndex(), i, i);
+    backing.erase(backing.begin() + i);
+    endRemoveRows();
+
+    // Add it to the top.
+    beginInsertRows(QModelIndex(), 0, 0);
+    backing.insert(0, value);
+    endInsertRows();
+}

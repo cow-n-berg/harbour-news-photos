@@ -36,24 +36,7 @@ PhotoModel::PhotoModel(QObject *parent) :
     backing << "sea cow" << "platypus" << "axolotl" << "quokka" << "pitahui" << "jerboa";
 }
 
-QHash<int, QByteArray> PhotoModel::roleNames() const {
-    QHash<int, QByteArray> roles;
-    roles[NameRole] = "name";
-    return roles;
-}
-
-
-QVariant PhotoModel::data(const QModelIndex &index, int role) const {
-    if(!index.isValid()) {
-        return QVariant();
-    }
-    if(role == NameRole) {
-        return QVariant(backing[index.row()]);
-    }
-    return QVariant();
-}
-
-void PhotoModel::resetPhoto() {
+void PhotoModel::resetRegExp() {
     newsSiteURL = "https://nos.nl/";
     sectionRE   = "<section id=\"nieuws_in_beeld\">(.*)<\\/section>";
     photoRE     = "<figure >(.*?)<\\/figure>";
@@ -61,4 +44,81 @@ void PhotoModel::resetPhoto() {
     titleRE     = "class=\"caption-title\">([^<]*)<";
     captionRE   = "class=\"caption-meta\">([^<]*)<";
     sourceRE    = "class=\"caption-source\">([^<]*)<";
+}
+
+void PhotoModel::getPhotos()
+{
+    if (newsSiteURL.empty()) PhotoModel::resetRegExp();
+
+    // Download the html file
+    QNetworkAccessManager *manager = new QNetworkAccessManager(this);
+
+    QNetworkRequest request;
+    request.setUrl(QUrl(newsSiteURL));
+
+    QNetworkReply *reply = manager->get(request);
+
+    QString tekst = reply->readAll();
+
+    QRegularExpression reSection(sectionRE);
+    QRegularExpression::PatternOption = QRegularExpression::DotMatchesEverythingOption;
+
+    QRegularExpressionMatch match = reSection.match(tekst);
+
+    QString section;
+
+    if (match.hasMatch()) {
+        section = match.captured(0);
+
+        section.replace(QRegularExpression("\t"), "");
+        section.replace(QRegularExpression("\n"), "");
+
+        // So there's a Section text now, containing the 10 Photos
+        QRegularExpression rePhoto(photoRE);
+        QRegularExpressionMatchIterator i = rePhoto.globalMatch(section);
+        while (i.hasNext()) {
+            QRegularExpressionMatch sectionMatch = i.next();
+            QString photo = sectionMatch.captured(1);
+
+            QString title   = "";
+            QString caption = "";
+            QString source  = "";
+
+            // Within each Photo we have to find the data
+            QRegularExpression rb(titleRE);
+            QRegularExpressionMatch matchb = rb.globalMatch(photo);
+            if (matchb.hasMatch()) title = matchb.captured(0);
+
+            QRegularExpression rc(captionRE);
+            QRegularExpressionMatch matchc = rc.globalMatch(photo);
+            if (matchc.hasMatch()) caption = matchc.captured(0);
+
+            QRegularExpression rd(sourceRE);
+            QRegularExpressionMatch matchd = rd.globalMatch(photo);
+            if (matchd.hasMatch()) source = matchd.captured(0);
+
+            QRegularExpression ra(jpgRE);
+            QRegularExpressionMatch matcha = ra.globalMatch(photo);
+            if (matcha.hasMatch()) {
+                QString jpgUrl = matcha.captured(0);
+
+                // Download jpg
+                request.setUrl(QUrl(jpgUrl));
+                QNetworkReply *reply = manager->get(request);
+                QPixmap jpgPix;
+                jpgPix.loadFromData(reply->readAll());
+
+                // Construct JSON
+                QJsonObject photo
+                {
+                    {"jpgUrl",  jpgUrl},
+                    {"jpgPix",  jpgPix},
+                    {"title",   title},
+                    {"caption", caption},
+                    {"source",  source}
+                };
+                photoArray->insert(photo);
+            }
+        }
+    }
 }
