@@ -14,14 +14,15 @@ TARGET = harbour-news-photos
 
 CONFIG += sailfishapp
 
-SOURCES += src/harbour-news-photos.cpp \
-#    src/photomodel.cpp \
-    src/demomodel.cpp
+#SOURCES += src/harbour-news-photos.cpp
 
 DISTFILES += qml/harbour-news-photos.qml \
     qml/cover/CoverPage.qml \
     qml/pages/FirstPage.qml \
-    qml/pages/SecondPage.qml \
+    qml/pages/PhotoDelegate.qml \
+    qml/cover/AboutPage.qml \
+#    qml/pages/SettingsPage.qml \
+    qml/components/Constants.qml \
     rpm/harbour-news-photos.changes.in \
     rpm/harbour-news-photos.changes.run.in \
     rpm/harbour-news-photos.spec \
@@ -44,9 +45,9 @@ DEFINES += \
 # modify the localized app name in the the .desktop file.
 TRANSLATIONS += translations/harbour-news-photos-nl.ts
 
-HEADERS += \
+#HEADERS += \
 #    src/photomodel.h \
-    src/demomodel.h
+#    src/demomodel.h
 
 QT += network
 QT += core
