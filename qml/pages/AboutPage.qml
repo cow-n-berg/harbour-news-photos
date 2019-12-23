@@ -1,9 +1,18 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
-import "../components"
 
 Page {
     id: aboutPage
+
+    property string version: "0.1"
+    property string devMail: "sailfishapp@cow-n-berg.nl"
+    property url devGithub: "https://github.com/cow-n-berg"
+
+    property url repoGithub: "https://github.com/cow-n-berg/harbour-news-photos"
+
+    property string mailSubjectHeader: "[SailfishOS][News Photos " + version + "] "
+    property string mailErrorSubjectHeader: "[SailfishOS][News Photos " + version + "][Error] "
+    property string mailBodyHeader: "Hey Rob, "
 
 //    allowedOrientations: Orientation.Landscape
     allowedOrientations: Orientation.All
@@ -67,7 +76,7 @@ Page {
                         horizontalCenter: parent.horizontalCenter
                     }
                     width: parent.width
-                    text: qsTr("version %1").arg(Qt.application.version)
+                    text: qsTr("version %1").arg(version)
                     font.pixelSize: Theme.fontSizeExtraSmall
                     horizontalAlignment: Text.AlignHCenter
                 }
@@ -125,7 +134,7 @@ Page {
                             height: Theme.iconSizeMedium
                             fillMode: Image.PreserveAspectFit
                         }
-                        onClicked: ExternalLinks.mail(constants.devMail, constants.mailSubjectHeader, constants.mailBodyHeader)
+                        onClicked: ExternalLinks.mail(constants.devMail, mailSubjectHeader, constants.mailBodyHeader)
                     }
                 }
 
@@ -142,7 +151,7 @@ Page {
                        <br/>
                        <br/>This app was inspired by Daily Comics,
                        <br/>by Damien Tardy-Panis. I did use some
-                       <br/>of his code to start with.").arg(constants.repoGithub).arg(constants.repoGithub)
+                       <br/>of his code to start with.").arg(repoGithub).arg(repoGithub)
                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                 font.pixelSize: Theme.fontSizeExtraSmall
                 horizontalAlignment: Text.AlignHCenter

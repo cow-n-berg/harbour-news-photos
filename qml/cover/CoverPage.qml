@@ -2,34 +2,25 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 
 CoverBackground {
-    Column {
-        visible: true
-        spacing: Theme.paddingLarge
+    SilicaListView {
+        id: coverListView
+        anchors.fill: parent
 
-        anchors.centerIn: parent
+        // Link to feedListModel
+        model: feedListModel
+        delegate: CoverDelegate{}
 
-        Label {
-            text: qsTr("News Photos")
-            color: Theme.highlightColor
-        }
-
-        Image {
-            width: parent.width
-            height: parent.width / sourceSize.width * sourceSize.height
-            fillMode: Image.PreserveAspectCrop
-            source: Qt.resolvedUrl("../images/img01.jpg")
-            anchors.horizontalCenter: parent.horizontalCenter
-        }
+        // Dirty hack to show only first news item on cover
+        spacing: Theme.paddingLarge * 20
     }
 
     CoverActionList {
         id: coverAction
 
         CoverAction {
-            iconSource: "image://theme/icon-cover-refresh"
+            iconSource: "image://theme/icon-cover-sync"
             onTriggered: {
-//                getPhotos()
-                firstPage.activate()
+                feedListModel.reload()
             }
         }
     }

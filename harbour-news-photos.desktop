@@ -2,6 +2,6 @@
 Type=Application
 X-Nemo-Application-Type=silica-qt5
 Icon=harbour-news-photos
-Exec=harbour-news-photos
+Exec=sailfish-qml harbour-news-photos
 Name=News Photos
 Name[nl]=Nieuwsfoto's

@@ -12,17 +12,14 @@
 # The name of your application
 TARGET = harbour-news-photos
 
-CONFIG += sailfishapp
-
-#SOURCES += src/harbour-news-photos.cpp
+CONFIG += sailfishapp_qml
 
 DISTFILES += qml/harbour-news-photos.qml \
+    qml/cover/CoverDelegate.qml \
     qml/cover/CoverPage.qml \
-    qml/pages/FirstPage.qml \
+    qml/pages/AboutPage.qml \
     qml/pages/PhotoDelegate.qml \
-    qml/cover/AboutPage.qml \
-#    qml/pages/SettingsPage.qml \
-    qml/components/Constants.qml \
+    qml/pages/FirstPage.qml \
     rpm/harbour-news-photos.changes.in \
     rpm/harbour-news-photos.changes.run.in \
     rpm/harbour-news-photos.spec \
@@ -32,22 +29,8 @@ DISTFILES += qml/harbour-news-photos.qml \
 
 SAILFISHAPP_ICONS = 86x86 108x108 128x128 172x172
 
-DEFINES += \
-    APP_VERSION=\"\\\"$${VERSION}\\\"\" \
-
 # to disable building translations every time, comment out the
 # following CONFIG line
 #CONFIG += sailfishapp_i18n
 
-# German translation is enabled as an example. If you aren't
-# planning to localize your app, remember to comment out the
-# following TRANSLATIONS line. And also do not forget to
-# modify the localized app name in the the .desktop file.
 TRANSLATIONS += translations/harbour-news-photos-nl.ts
-
-#HEADERS += \
-#    src/photomodel.h \
-#    src/demomodel.h
-
-QT += network
-QT += core
