@@ -3,7 +3,7 @@ import Sailfish.Silica 1.0
 
 ListItem {
     id: container
-    contentHeight: Theme.itemSizeMedium
+    contentHeight: Theme.itemSizeHuge
 
     Text {
         id: imageSource
@@ -18,51 +18,31 @@ ListItem {
             margins: Theme.paddingMedium
         }
 
+        Image {
+            id: icon
+            width: parent.width / 2
+            height: width / 2
+            anchors {
+                top: parent.top
+                topMargin: Theme.paddingMedium
+                horizontalCenter: parent.horizontalCenter
+            }
+
+            source: Theme.colorScheme == 0  ? Qt.resolvedUrl("../images/icons/light/icon-cover-camera.png") : Qt.resolvedUrl("../../images/icons/dark/icon-cover-camera.png")
+        }
+
         Label {
             id: categoryLabel
             anchors {
-                right: parent.right
-                top: parent.top
+                top: icon.bottom
+                horizontalCenter: parent.horizontalCenter
             }
 
             font.pixelSize: Theme.fontSizeMedium / 1.2
-            color: Theme.highlightColor
+            color: Theme.secondaryColor
+//            color: Theme.highlightColor
 
-            text: {
-                if (feedListModel.source == "https://feeds.feedburner.com/nosjournaal") {
-                    "Algemeen news-photos"
-                }
-                else if (feedListModel.source == "https://feeds.feedburner.com/nossportalgemeen") {
-                    "Sportnews-photos"
-                }
-                else if (feedListModel.source == "https://feeds.feedburner.com/nosnews-photosbinnenland") {
-                    "Binnenland"
-                }
-                else if (feedListModel.source == "https://feeds.feedburner.com/nosnews-photosbuitenland") {
-                    "Buitenland"
-                }
-                else if (feedListModel.source == "https://feeds.feedburner.com/nosnews-photospolitiek") {
-                    "Politiek"
-                }
-                else if (feedListModel.source == "https://feeds.feedburner.com/nosnews-photoseconomie") {
-                    "Economie"
-                }
-                else if (feedListModel.source == "https://feeds.feedburner.com/nosnews-photosopmerkelijk") {
-                    "Opmerkelijk"
-                }
-                else if (feedListModel.source == "https://feeds.feedburner.com/nosnews-photoskoningshuis") {
-                    "Koningshuis"
-                }
-                else if (feedListModel.source == "https://feeds.feedburner.com/nosnews-photoscultuurenmedia") {
-                    "Cultuur & Media"
-                }
-                else if (feedListModel.source == "https://feeds.feedburner.com/nosnews-photostechnologie") {
-                    "Technologie"
-                }
-                else if (feedListModel.source == "https://feeds.feedburner.com/nosop3") {
-                    "NOS op 3"
-                }
-            }
+            text: { "News Photos" }
         }
 
         Image {
@@ -78,35 +58,23 @@ ListItem {
             source: image
         }
 
-        Label {
-            id: containerTitle
-            width: parent.width
-            anchors {
-                top: containerImage.bottom
-                left: parent.left
-            }
+//        Label {
+//            id: containerTitle
+//            width: parent.width
+//            anchors {
+//                top: containerImage.bottom
+//                horizontalCenter: parent.horizontalCenter
+//            }
 
-            text: title
+//            text: title
 
-            font.pixelSize: Theme.fontSizeExtraSmall / 1.1
-            wrapMode: Text.WordWrap
-            truncationMode: TruncationMode.Fade
-        }
+//            font.pixelSize: Theme.fontSizeExtraSmall / 1.1
+//            wrapMode: Text.WordWrap
+//            truncationMode: TruncationMode.Fade
+//        }
+    }
 
-        Label {
-            id: containerDate
-            width: parent.width
-            anchors {
-                top: containerTitle.bottom
-                topMargin: Theme.paddingSmall
-                left: parent.left
-            }
-
-            text: pubDate
-
-            font.pixelSize: Theme.fontSizeExtraSmall / 1.5
-            color: Theme.highlightColor
-            wrapMode: Text.WordWrap
-        }
+    onClicked: {
+        pageStack.push(mainPage)
     }
 }

@@ -8,27 +8,25 @@ Name:       harbour-news-photos
 # >> macros
 # << macros
 
-Summary:    news-photos
-Version:    1.1
+Summary:    News Photos
+Version:    1.0
 Release:    1
 Group:      Qt/Qt
 License:    LICENSE
 BuildArch:  noarch
-URL:        http://example.org/
+URL:        https://github.com/cow-n-berg/harbour-news-photos
 Source0:    %{name}-%{version}.tar.bz2
 Source100:  harbour-news-photos.yaml
 Requires:   sailfishsilica-qt5 >= 0.10.9
 Requires:   libsailfishapp-launcher
-Requires:   qt5-qtdeclarative-import-xmllistmodel
 BuildRequires:  pkgconfig(sailfishapp) >= 1.0.3
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Qml)
 BuildRequires:  pkgconfig(Qt5Quick)
 BuildRequires:  desktop-file-utils
-BuildRequires:  qt5-qtdeclarative-import-xmllistmodel
 
 %description
-Short description of my Sailfish OS Application
+Shows a slide show of news photos from the website of Dutch broadcasting service NOS, "Nieuws in beeld"
 
 
 %prep

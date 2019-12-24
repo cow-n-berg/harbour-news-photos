@@ -143,7 +143,6 @@ Page {
             Label {
                 id: codeLabel
                 width: parent.width - 2*Theme.paddingLarge
-//                text: "Test"
                 text: qsTr("The source code is available at
                        <br/><a href='%1'>%2</a>
                        <br/>You can contact me for any remarks,
@@ -157,7 +156,27 @@ Page {
                 horizontalAlignment: Text.AlignHCenter
                 textFormat: Text.StyledText
                 linkColor: Theme.highlightColor
-//                onLinkActivated: ExternalLinks.browse(link)
+                onLinkActivated: ExternalLinks.browse(link)
+            }
+
+            Label {
+                id: historyLabel
+                width: parent.width - 2*Theme.paddingLarge
+                text: qsTr("Unfortunately, I couldn't get the
+                       <br/>binding straight between QML and C++,
+                       <br/>so I settled for an easier way.
+                       <br/>The XmlViewList approach was adopted
+                       <br/>from SanderKlootwijk. The RegExp stuff
+                       <br/>appeared to be very easy in php, so
+                       <br/>I created a cron on a web server for
+                       <br/>this. The only straightforward piece
+                       <br/>of coding in this project...")
+                wrapMode: Text.WrapAtWordBoundaryOrAnywhere
+                font.pixelSize: Theme.fontSizeExtraSmall
+                horizontalAlignment: Text.AlignHCenter
+                textFormat: Text.StyledText
+                linkColor: Theme.highlightColor
+                onLinkActivated: ExternalLinks.browse(link)
             }
 
             Label {
