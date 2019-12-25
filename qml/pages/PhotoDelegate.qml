@@ -55,6 +55,7 @@ Item {
 
                 text: title + " - " + description + " - " + source
                 font.pixelSize: Theme.fontSizeSmall
+                color: Theme.lightSecondaryColor
                 wrapMode: Text.WordWrap
                 truncationMode: TruncationMode.Fade
             }

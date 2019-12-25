@@ -20,15 +20,15 @@ ListItem {
 
         Image {
             id: icon
-            width: parent.width / 2
-            height: width / 2
+            width: parent.width / 4
+            height: width
             anchors {
                 top: parent.top
                 topMargin: Theme.paddingMedium
                 horizontalCenter: parent.horizontalCenter
             }
 
-            source: Theme.colorScheme == 0  ? Qt.resolvedUrl("../images/icons/light/icon-cover-camera.png") : Qt.resolvedUrl("../../images/icons/dark/icon-cover-camera.png")
+            source: Theme.colorScheme == 0  ? Qt.resolvedUrl("cover-camera.png") : Qt.resolvedUrl("cover-camera.png")
         }
 
         Label {
@@ -40,9 +40,10 @@ ListItem {
 
             font.pixelSize: Theme.fontSizeMedium / 1.2
             color: Theme.secondaryColor
-//            color: Theme.highlightColor
 
-            text: { "News Photos" }
+            text: title
+            truncationMode: TruncationMode.Fade
+//            text: { "News Photos" }
         }
 
         Image {
@@ -50,6 +51,7 @@ ListItem {
             width: parent.width
             height: width / 1.7
             anchors {
+//                centerIn: parent
                 top: categoryLabel.bottom
                 topMargin: Theme.paddingMedium
                 horizontalCenter: parent.horizontalCenter
@@ -57,21 +59,6 @@ ListItem {
 
             source: image
         }
-
-//        Label {
-//            id: containerTitle
-//            width: parent.width
-//            anchors {
-//                top: containerImage.bottom
-//                horizontalCenter: parent.horizontalCenter
-//            }
-
-//            text: title
-
-//            font.pixelSize: Theme.fontSizeExtraSmall / 1.1
-//            wrapMode: Text.WordWrap
-//            truncationMode: TruncationMode.Fade
-//        }
     }
 
     onClicked: {
