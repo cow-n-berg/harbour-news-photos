@@ -18,23 +18,38 @@ ListItem {
             margins: Theme.paddingMedium
         }
 
+//        Image {
+//            id: icon
+//            width: parent.width / 4
+//            height: width
+//            anchors {
+//                top: parent.top
+//                topMargin: Theme.paddingMedium
+//                horizontalCenter: parent.horizontalCenter
+//            }
+
+//            source: Theme.colorScheme == 0  ? Qt.resolvedUrl("cover-camera.png") : Qt.resolvedUrl("cover-camera.png")
+//        }
+
         Image {
-            id: icon
-            width: parent.width / 4
-            height: width
+            id: containerImage
+            width: parent.width
+            height: width / 1.7
             anchors {
+//                top: categoryLabel.bottom
+//                topMargin: Theme.paddingMedium
                 top: parent.top
-                topMargin: Theme.paddingMedium
+                topMargin: parent.width / 2
                 horizontalCenter: parent.horizontalCenter
             }
 
-            source: Theme.colorScheme == 0  ? Qt.resolvedUrl("cover-camera.png") : Qt.resolvedUrl("cover-camera.png")
+            source: image
         }
 
         Label {
             id: categoryLabel
             anchors {
-                top: icon.bottom
+                top: containerImage.bottom
                 horizontalCenter: parent.horizontalCenter
             }
 
@@ -44,20 +59,6 @@ ListItem {
             text: title
             truncationMode: TruncationMode.Fade
 //            text: { "News Photos" }
-        }
-
-        Image {
-            id: containerImage
-            width: parent.width
-            height: width / 1.7
-            anchors {
-//                centerIn: parent
-                top: categoryLabel.bottom
-                topMargin: Theme.paddingMedium
-                horizontalCenter: parent.horizontalCenter
-            }
-
-            source: image
         }
     }
 

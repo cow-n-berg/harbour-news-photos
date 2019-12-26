@@ -5,6 +5,7 @@ Item {
     id: container
     height: parent.height
     width: parent.width
+
     Rectangle {
         id: photoRect
         anchors {
@@ -12,7 +13,6 @@ Item {
         }
         color: "black"
         opacity: .65
-
 
         Text {
             // No idea why this is here
@@ -32,32 +32,61 @@ Item {
             }
 
             Image {
-                id: containerImage
+                id: photoContainer
                 width: photoBox.width
-//                height: (Screen.orientation === Qt.LandscapeOrientation) ? photoBox.height * 0.85 : photoBox.width / sourceSize.width * sourceSize.height
                 height: photoBox.width / sourceSize.width * sourceSize.height
                 anchors {
-                    top: photoBox.top
                     horizontalCenter: parent.horizontalCenter
+                    verticalCenter: parent.verticalCenter
                 }
 
                 source: image
             }
 
+//            Rectangle {
+//                id: titleRect
+//                height: photoTitle.height // parent.height / 5
+//                anchors {
+//                    bottom: parent.bottom
+//                }
+//                color: "black"
+//                opacity: 1.0
+//            }
+
             Label {
-                id: containerTitle
-                width: photoBox.width
-                y: photoBox.height * 0.15
+                id: photoTitle
+                width: parent.width - hideButton.width
                 anchors {
-//                    bottom: (Screen.orientation === Qt.LandscapeOrientation) ? photoBox.bottom : photoBox.bottom - 4 * y
-                    bottom: photoBox.bottom
+//                        top: (Screen.primaryOrientation === Qt.PortraitOrientation) ? photoContainer.bottom : undefined
+//                        bottom: (Screen.primaryOrientation === Qt.LandscapeOrientation) ? photoContainer.bottom : undefined
+                    bottom: parent.bottom
                 }
 
-                text: title + " - " + description + " - " + source
+                function plain( htmlText ) {
+                    return unescape(htmlText);
+                }
+
+                text: plain(title + " - " + description + " - " + source)
                 font.pixelSize: Theme.fontSizeSmall
                 color: Theme.lightSecondaryColor
                 wrapMode: Text.WordWrap
                 truncationMode: TruncationMode.Fade
+//                        visible: true
+            }
+
+            IconButton {
+                id: hideButton
+                icon.source: Qt.resolvedUrl("icon-x.png")
+                anchors {
+                    bottom: parent.bottom
+                    right: parent.right
+                }
+
+                onPressed: {
+//                    titleRect.visible = !titleRect.visible
+                    hideButton.visible = !hideButton.visible
+                    photoTitle.visible = !photoTitle.visible
+                }
             }
         }
     }
