@@ -4,7 +4,7 @@ import Sailfish.Silica 1.0
 Page {
     id: aboutPage
 
-    property string version: "0.1"
+    property string version: "1.1"
     property string devMail: "sailfishapp@cow-n-berg.nl"
     property url devGithub: "https://github.com/cow-n-berg"
 
@@ -47,12 +47,13 @@ Page {
 
                 Image {
                     id: coverImage
-                    source: Qt.resolvedUrl("../images/img01.jpg")
+                    source: Qt.resolvedUrl("images/img.jpg")
                     fillMode: Image.PreserveAspectFit
                     smooth: true
                     clip: true
                     asynchronous: true
-                    width: Screen.width
+//                    width: Screen.width
+                    width: parent.width - 2*Theme.paddingLarge
                     anchors.horizontalCenter: parent.horizontalCenter
                 }
 
@@ -64,7 +65,7 @@ Page {
                         horizontalCenter: parent.horizontalCenter
                     }
                     width: parent.width - 2*Theme.paddingLarge
-                    text: qsTr("Your daily fix of NOS News Photos")
+                    text: qsTr("Your daily fix of News Photos")
                     font.pixelSize: Theme.fontSizeSmall
                     horizontalAlignment: Text.AlignHCenter
                 }
@@ -118,11 +119,11 @@ Page {
                         height: Theme.iconSizeMedium
                         width: Theme.iconSizeMedium
                         icon {
-                            source: Theme.colorScheme == 0  ? Qt.resolvedUrl("../images/icons/light/github.png") : Qt.resolvedUrl("../../images/icons/dark/github.png")
+                            source: Theme.colorScheme == 0  ? Qt.resolvedUrl("images/github-light.png") : Qt.resolvedUrl("images/github-dark.png")
                             height: Theme.iconSizeMedium
                             fillMode: Image.PreserveAspectFit
                         }
-                        onClicked: ExternalLinks.browse(constants.devGithub)
+                        onClicked: ExternalLinks.browse(repoGithub)
                     }
 
                     IconButton {
@@ -143,14 +144,13 @@ Page {
             Label {
                 id: codeLabel
                 width: parent.width - 2*Theme.paddingLarge
-                text: qsTr("The source code is available at
-                       <br/><a href='%1'>%2</a>
+                text: qsTr("The source code is available at Github.
                        <br/>You can contact me for any remarks,
                        <br/>bugs, feature requests, ideas,...
                        <br/>
                        <br/>This app was inspired by Daily Comics,
                        <br/>by Damien Tardy-Panis. I did use some
-                       <br/>of his code to start with.").arg(repoGithub).arg(repoGithub)
+                       <br/>of his code to start with.")
                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                 font.pixelSize: Theme.fontSizeExtraSmall
                 horizontalAlignment: Text.AlignHCenter
@@ -166,10 +166,10 @@ Page {
                        <br/>binding straight between QML and C++,
                        <br/>so I settled for an easier way.
                        <br/>The XmlViewList approach was adopted
-                       <br/>from SanderKlootwijk. The RegExp stuff
-                       <br/>appeared to be very easy in php, so
-                       <br/>I created a cron on a web server for
-                       <br/>this. The only straightforward piece
+                       <br/>from SanderKlootwijk. Thanks!
+                       <br/>The RegExp stuff appeared to be very easy
+                       <br/>in php, so I created a cron on a web server
+                       <br/>for this. The only straightforward piece
                        <br/>of coding in this project...")
                 wrapMode: Text.WrapAtWordBoundaryOrAnywhere
                 font.pixelSize: Theme.fontSizeExtraSmall

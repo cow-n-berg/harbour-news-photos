@@ -9,8 +9,8 @@ Name:       harbour-news-photos
 # << macros
 
 Summary:    News Photos
-Version:    1.0
-Release:    3
+Version:    1.1
+Release:    1
 Group:      Qt/Qt
 License:    LICENSE
 BuildArch:  noarch
@@ -26,8 +26,8 @@ BuildRequires:  pkgconfig(Qt5Quick)
 BuildRequires:  desktop-file-utils
 
 %description
-Shows a slide show of news photos from the website of Dutch broadcasting service NOS, "Nieuws in beeld"
-
+Shows a slide show of news photos from the website of Dutch broadcasting service NOS, "Nieuws in beeld".
+Also from The Guardian, "Photo highlights of the day"
 
 %prep
 %setup -q -n %{name}-%{version}

@@ -23,42 +23,24 @@ Item {
 
         Item {
             id: photoBox
-//            x: Theme.horizontalPageMargin
-            x: 0
-            height: parent.height
-            width: (Screen.orientation === Qt.LandscapeOrientation) ? parent.width - x * 2 : parent.width
             anchors {
-                rightMargin: (Screen.orientation === Qt.LandscapeOrientation) ? x : 0
+                fill: parent
             }
 
             Image {
                 id: photoContainer
-                width: photoBox.width
-                height: photoBox.width / sourceSize.width * sourceSize.height
                 anchors {
-                    horizontalCenter: parent.horizontalCenter
-                    verticalCenter: parent.verticalCenter
+                    fill: parent
+                    centerIn: parent
                 }
-
+                fillMode: Image.PreserveAspectFit
                 source: image
             }
-
-//            Rectangle {
-//                id: titleRect
-//                height: photoTitle.height // parent.height / 5
-//                anchors {
-//                    bottom: parent.bottom
-//                }
-//                color: "black"
-//                opacity: 1.0
-//            }
 
             Label {
                 id: photoTitle
                 width: parent.width - hideButton.width
                 anchors {
-//                        top: (Screen.primaryOrientation === Qt.PortraitOrientation) ? photoContainer.bottom : undefined
-//                        bottom: (Screen.primaryOrientation === Qt.LandscapeOrientation) ? photoContainer.bottom : undefined
                     bottom: parent.bottom
                 }
 
@@ -66,25 +48,24 @@ Item {
                     return unescape(htmlText);
                 }
 
-                text: plain(title + " - " + description + " - " + source)
+                text: plain(title + " - " + description + " - " + site + " - " + source)
                 font.pixelSize: Theme.fontSizeSmall
                 color: Theme.lightSecondaryColor
                 wrapMode: Text.WordWrap
-                truncationMode: TruncationMode.Fade
-//                        visible: true
+//                visible: (Screen.primaryOrientation === Qt.LandscapeOrientation) ? generic.showTextOnPhoto : true
+                visible: generic.showTextOnPhoto
             }
 
             IconButton {
                 id: hideButton
-                icon.source: Qt.resolvedUrl("icon-x.png")
+                icon.source: Qt.resolvedUrl("images/icon-hide-show.svg")
                 anchors {
                     bottom: parent.bottom
                     right: parent.right
                 }
 
                 onPressed: {
-//                    titleRect.visible = !titleRect.visible
-                    hideButton.visible = !hideButton.visible
+//                    hideButton.visible = !hideButton.visible
                     photoTitle.visible = !photoTitle.visible
                 }
             }

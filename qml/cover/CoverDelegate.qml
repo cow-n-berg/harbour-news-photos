@@ -18,23 +18,10 @@ ListItem {
             margins: Theme.paddingMedium
         }
 
-//        Image {
-//            id: icon
-//            width: parent.width / 4
-//            height: width
-//            anchors {
-//                top: parent.top
-//                topMargin: Theme.paddingMedium
-//                horizontalCenter: parent.horizontalCenter
-//            }
-
-//            source: Theme.colorScheme == 0  ? Qt.resolvedUrl("cover-camera.png") : Qt.resolvedUrl("cover-camera.png")
-//        }
-
         Image {
             id: containerImage
             width: parent.width
-            height: width / 1.7
+//            height: width / 1.778
             anchors {
 //                top: categoryLabel.bottom
 //                topMargin: Theme.paddingMedium
@@ -43,12 +30,14 @@ ListItem {
                 horizontalCenter: parent.horizontalCenter
             }
 
+            fillMode: Image.PreserveAspectFit
             source: image
         }
 
         Label {
             id: categoryLabel
             anchors {
+//                bottom: containerImage.top
                 top: containerImage.bottom
                 horizontalCenter: parent.horizontalCenter
             }
@@ -57,8 +46,7 @@ ListItem {
             color: Theme.secondaryColor
 
             text: title
-            truncationMode: TruncationMode.Fade
-//            text: { "News Photos" }
+            truncationMode: TruncationMode.Elide
         }
     }
 
