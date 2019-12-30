@@ -2,18 +2,16 @@ import QtQuick 2.0
 import Sailfish.Silica 1.0
 
 CoverBackground {
-    SilicaGridView {
+    SilicaListView {
         id: coverListView
         anchors.fill: parent
 
-        cellWidth: width / 2
-        cellHeight: width / 3.5
         // Link to feedListModel
         model: feedListModel
         delegate: CoverDelegate{}
 
         // Dirty hack to show only first news item on cover
-//        spacing: Theme.paddingLarge * 20
+        spacing: Theme.paddingLarge * 20
     }
 
     CoverActionList {

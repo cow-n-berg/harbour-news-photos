@@ -85,37 +85,12 @@ Page {
                     text: qsTr("Show photos")
                     enabled: (generic.showSiteNOS || generic.showSiteGuardian)
                     onClicked: {
+                        generic.saveSettings()
                         feedListModel.reload()
                         pageStack.push(mainPage)
                     }
                 }
             }
-
-//            Label {
-//                text: qsTr("Back to the photos!")
-//                color: palette.highlightColor
-//                anchors.horizontalCenter: parent.horizontalCenter
-//            }
-//            IconButton {
-//                icon.source: "image://theme/icon-l-play"
-//                anchors.horizontalCenter: parent.horizontalCenter
-//                onClicked: {
-//                    feedListModel.reload()
-//                    pageStack.push(mainPage)
-//                }
-//            }
-
-//            Label {
-//                text: qsTr("About")
-//                color: palette.highlightColor
-//                anchors.horizontalCenter: parent.horizontalCenter
-//            }
-//            IconButton {
-////                icon.source: Qt.resolvedUrl("images/icon-about.svg")
-//                icon.source: "image://theme/icon-l-people"
-//                anchors.horizontalCenter: parent.horizontalCenter
-//                onClicked: pageStack.push(Qt.resolvedUrl("AboutPage.qml"))
-//            }
         }
     }
 

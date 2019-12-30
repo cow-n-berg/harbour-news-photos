@@ -1,14 +1,14 @@
 .import QtQuick.LocalStorage 2.0 as Storage
 
 function getDatabase() {
-   return Storage.LocalStorage.openDatabaseSync("HelloApp",    "0.1", "HelloAppDatabase", 100);
+   return Storage.LocalStorage.openDatabaseSync("NewsPhotos",    "0.1", "NewsPhotosDb", 100);
 }
 
 function set(setting, value) {
   var db = getDatabase();
   var res = "";
    db.transaction(function(tx) {
-     tx.executeSql('CREATE TABLE IF NOT EXISTS settings(setting TEXT UNIQUE, value TEXT)');
+     tx.executeSql('CREATE TABLE IF NOT EXISTS settings(setting TEXT UNIQUE, value INTEGER)');
     var rs = tx.executeSql('INSERT OR REPLACE INTO settings VALUES (?,?);', [setting,value]);
       if (rs.rowsAffected > 0) {
        res = "OK";

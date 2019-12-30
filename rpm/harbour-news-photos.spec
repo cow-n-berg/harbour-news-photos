@@ -9,8 +9,8 @@ Name:       harbour-news-photos
 # << macros
 
 Summary:    News Photos
-Version:    1.1
-Release:    2
+Version:    1.3
+Release:    1
 Group:      Qt/Qt
 License:    LICENSE
 BuildArch:  noarch
@@ -40,7 +40,7 @@ Also from The Guardian, "Photo highlights of the day"
 # >> build pre
 # << build pre
 
-%qmake5 
+%qmake5
 
 make %{?_smp_mflags}
 

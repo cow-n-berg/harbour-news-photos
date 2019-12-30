@@ -20,6 +20,8 @@ DISTFILES += qml/harbour-news-photos.qml \
     qml/pages/AboutPage.qml \
     qml/pages/PhotoDelegate.qml \
     qml/pages/FirstPage.qml \
+    qml/scripts/ExternalLinks.js \
+    qml/scripts/Storage.js \
     rpm/harbour-news-photos.changes.in \
     rpm/harbour-news-photos.changes.run.in \
     rpm/harbour-news-photos.spec \
@@ -28,6 +30,9 @@ DISTFILES += qml/harbour-news-photos.qml \
     harbour-news-photos.desktop
 
 SAILFISHAPP_ICONS = 86x86 108x108 128x128 172x172
+
+DEFINES += \
+    APP_VERSION=\"\\\"$${VERSION}\\\"\"
 
 # to disable building translations every time, comment out the
 # following CONFIG line

@@ -1,5 +1,6 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
+import "../scripts/ExternalLinks.js" as ExternalLinks
 
 Item {
     id: container
@@ -69,6 +70,7 @@ Item {
                 onPressed: {
 //                    hideButton.visible = !hideButton.visible
                     photoTitle.visible = !photoTitle.visible
+                    showBroadcast.visible = photoTitle.visible
                 }
             }
 
