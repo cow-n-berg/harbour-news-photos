@@ -42,6 +42,8 @@ Item {
                 width: parent.width - hideButton.width
                 anchors {
                     bottom: parent.bottom
+//                    top: photoContainer.bottom - (Screen.primaryOrientation === Qt.LandscapeOrientation) ? height : 0
+                    left: parent.left
                 }
 
                 function plain( htmlText ) {
@@ -68,6 +70,19 @@ Item {
 //                    hideButton.visible = !hideButton.visible
                     photoTitle.visible = !photoTitle.visible
                 }
+            }
+
+            IconButton {
+                id: showBroadcast
+                icon.source: (site === "NOS") ? Qt.resolvedUrl("images/icon-nos.svg") : Qt.resolvedUrl("images/icon-the-guardian.svg")
+                anchors {
+//                    bottom: photoContainer.top - (Screen.primaryOrientation === Qt.LandscapeOrientation) ? height : 0
+//                    top: page.isPortrait ? image.bottom : header.bottom
+                    top: parent.top
+                    right: parent.right
+                }
+
+                onClicked: ExternalLinks.browse(link)
             }
         }
     }
