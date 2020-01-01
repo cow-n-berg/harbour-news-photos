@@ -68,7 +68,7 @@ Page {
             }
             IconTextSwitch {
                 text: qsTr("Show text on top of photo")
-                description: qsTr("Text can be hidden or shown on every slide by tapping the 'ooo' icon in lower right corner")
+                description: qsTr("Text can be hidden or shown on every slide by tapping it")
                 icon.source: "image://theme/icon-m-dismiss"
                 checked: generic.showTextOnPhoto
                 onClicked: generic.showTextOnPhoto = !generic.showTextOnPhoto

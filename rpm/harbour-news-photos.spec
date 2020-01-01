@@ -10,7 +10,7 @@ Name:       harbour-news-photos
 
 Summary:    News Photos
 Version:    1.3
-Release:    5
+Release:    6
 Group:      Qt/Qt
 License:    LICENSE
 BuildArch:  noarch

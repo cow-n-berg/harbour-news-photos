@@ -29,3 +29,6 @@
 - Added nice icons of NOS and The Guardian
 - Added browser link to icon over photo
 - Added About page
+
+* Wed Jan 01 2020 Rob Kouwenberg <sailfish@cow-n-berg.nl> 1.3-6
+- Exchanged hide icon for MouseArea
