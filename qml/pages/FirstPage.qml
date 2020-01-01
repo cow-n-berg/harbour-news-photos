@@ -48,14 +48,14 @@ Page {
             IconTextSwitch {
                 text: "NOS Nieuws in beeld"
                 description: qsTr("New images at around 14:00 and 19:00,<br/>texts are Dutch only.")
-                icon.source: Qt.resolvedUrl("images/nos.svg")
+                icon.source: Theme.colorScheme == 0  ? Qt.resolvedUrl("images/nos.svg") : Qt.resolvedUrl("images/nos-dark.svg")
                 checked: generic.showSiteNOS
                 onClicked: generic.showSiteNOS = !generic.showSiteNOS
             }
             IconTextSwitch {
                 text: "The Guardian"
                 description: qsTr("Photo highlights of the day,<br/>change once a day typically")
-                icon.source: Qt.resolvedUrl("images/the-guardian.svg")
+                icon.source: Theme.colorScheme == 0  ? Qt.resolvedUrl("images/the-guardian.svg") : Qt.resolvedUrl("images/the-guardian-dark.svg")
                 checked: generic.showSiteGuardian
                 onClicked: generic.showSiteGuardian = !generic.showSiteGuardian
             }
@@ -63,17 +63,22 @@ Page {
                 text: qsTr("Vertical scroll")
                 description: qsTr("Or horizontal scroll")
                 icon.source: "image://theme/icon-m-transfer"
-//                anchors.horizontalCenter: parent.horizontalCenter
                 checked: generic.preferVerticalScroll
                 onClicked: generic.preferVerticalScroll = !generic.preferVerticalScroll
             }
             IconTextSwitch {
                 text: qsTr("Show text on top of photo")
-                description: qsTr("Text can be hidden or shown on every slide by tapping lower right corner (ooo)")
+                description: qsTr("Text can be hidden or shown on every slide by tapping the 'ooo' icon in lower right corner")
                 icon.source: "image://theme/icon-m-dismiss"
-//                anchors.horizontalCenter: parent.horizontalCenter
                 checked: generic.showTextOnPhoto
                 onClicked: generic.showTextOnPhoto = !generic.showTextOnPhoto
+            }
+            IconTextSwitch {
+                text: qsTr("Show one photo on cover")
+                description: qsTr("Or show grid view of many photos")
+                icon.source: Theme.colorScheme == 0  ? Qt.resolvedUrl("images/icon-listview.svg") : Qt.resolvedUrl("images/icon-listview-dark.svg")
+                checked: generic.coverShowListView
+                onClicked: generic.coverShowListView = !generic.coverShowListView
             }
 
             ButtonLayout {

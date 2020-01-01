@@ -14,6 +14,7 @@ ApplicationWindow
     property bool showSiteGuardian     : Storage.get( "showSiteGuardian", true)
     property bool preferVerticalScroll : Storage.get( "preferVerticalScroll", false)
     property bool showTextOnPhoto      : Storage.get( "showTextOnPhoto", true)
+    property bool coverShowListView    : Storage.get( "coverShowListView", true)
 
     function xmlSiteUrl(showSiteNOS, showSiteGuardian) {
         var textShowNOS = (showSiteNOS) ? "true" : "false";
@@ -26,11 +27,11 @@ ApplicationWindow
         Storage.set( "showSiteGuardian"    , showSiteGuardian    );
         Storage.set( "preferVerticalScroll", preferVerticalScroll);
         Storage.set( "showTextOnPhoto"     , showTextOnPhoto     );
+        Storage.set( "coverShowListView"   , coverShowListView   );
     }
 
     initialPage: Component { FirstPage { } }
-    cover: Qt.resolvedUrl("cover/CoverPage.qml")
-//    allowedOrientations: defaultAllowedOrientations
+    cover: (coverShowListView) ? Qt.resolvedUrl("cover/CoverList.qml") : Qt.resolvedUrl("cover/CoverGrid.qml")
     allowedOrientations: Orientation.All
 
     XmlListModel {

@@ -21,10 +21,7 @@ ListItem {
         Image {
             id: containerImage
             width: parent.width
-//            height: width / 1.778
             anchors {
-//                top: categoryLabel.bottom
-//                topMargin: Theme.paddingMedium
                 top: parent.top
                 topMargin: parent.width / 2
                 horizontalCenter: parent.horizontalCenter
@@ -37,7 +34,6 @@ ListItem {
         Label {
             id: categoryLabel
             anchors {
-//                bottom: containerImage.top
                 top: containerImage.bottom
                 horizontalCenter: parent.horizontalCenter
             }
@@ -46,7 +42,7 @@ ListItem {
             color: Theme.secondaryColor
 
             text: title
-            truncationMode: TruncationMode.Elide
+            truncationMode: TruncationMode.Fade
         }
     }
 

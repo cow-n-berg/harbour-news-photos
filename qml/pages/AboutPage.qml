@@ -5,7 +5,7 @@ import "../scripts/ExternalLinks.js" as ExternalLinks
 Page {
     id: aboutPage
 
-    property string version: "1.2"
+    property string version: "1.3"
     property string devMail: "sailfishapp@cow-n-berg.nl"
     property url devGithub: "https://github.com/cow-n-berg"
 
