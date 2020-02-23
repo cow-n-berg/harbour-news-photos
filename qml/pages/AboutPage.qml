@@ -5,12 +5,11 @@ import "../scripts/ExternalLinks.js" as ExternalLinks
 Page {
     id: aboutPage
 
-    property string version: "1.3"
+    property string version: "1.4.1"
+    property string author: "Rob Kouwenberg"
     property string devMail: "sailfishapp@cow-n-berg.nl"
     property url devGithub: "https://github.com/cow-n-berg"
-
     property url repoGithub: "https://github.com/cow-n-berg/harbour-news-photos"
-
     property string mailSubjectHeader: "[SailfishOS][News Photos " + version + "] "
     property string mailErrorSubjectHeader: "[SailfishOS][News Photos " + version + "][Error] "
     property string mailBodyHeader: "Hey Rob, "
@@ -103,7 +102,7 @@ Page {
                     }
                     color: Theme.highlightColor
                     horizontalAlignment: Text.AlignHCenter
-                    text: qsTr("created by %1").arg("Rob Kouwenberg")
+                    text: qsTr("created by %1").arg(author)
                 }
 
                 Row {
@@ -120,7 +119,7 @@ Page {
                         height: Theme.iconSizeMedium
                         width: Theme.iconSizeMedium
                         icon {
-                            source: Theme.colorScheme == 0  ? Qt.resolvedUrl("images/github-light.png") : Qt.resolvedUrl("images/github-dark.png")
+                            source: Theme.colorScheme == Theme.LightOnDark  ? Qt.resolvedUrl("images/github-light.png") : Qt.resolvedUrl("images/github-dark.png")
                             height: Theme.iconSizeMedium
                             fillMode: Image.PreserveAspectFit
                         }

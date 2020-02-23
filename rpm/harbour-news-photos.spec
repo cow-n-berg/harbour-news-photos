@@ -9,8 +9,8 @@ Name:       harbour-news-photos
 # << macros
 
 Summary:    News Photos
-Version:    1.3
-Release:    6
+Version:    1.4
+Release:    1
 Group:      Qt/Qt
 License:    LICENSE
 BuildArch:  noarch

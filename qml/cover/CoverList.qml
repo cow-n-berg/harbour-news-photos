@@ -23,12 +23,5 @@ CoverBackground {
                 feedListModel.reload()
             }
         }
-
-//        CoverAction {
-//            iconSource: "image://theme/icon-cover-subview"
-//            onTriggered: {
-//                onClicked: pageStack.push(Qt.resolvedUrl("AboutPage.qml"))
-//            }
-//        }
     }
 }

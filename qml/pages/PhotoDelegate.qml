@@ -4,27 +4,12 @@ import "../scripts/ExternalLinks.js" as ExternalLinks
 
 Item {
     id: container
+
+    property bool showBackground: generic.showTextOnPhoto
+    property real textOpacity: 0.3
+
     height: parent.height
     width: parent.width
-
-//    Timer {
-//        interval: 0
-//        running: true
-//        onTriggered: {
-//            showBackground = true
-//            visibleTimer.start()
-//        }
-//    }
-
-//    // Remove garbage from photo
-//    Timer {
-//        id: visibleTimer
-//        interval: 3000
-//        running: false
-//        onTriggered: {
-//            showBackground = false
-//        }
-//    }
 
     Rectangle {
         id: photoRect
@@ -32,7 +17,7 @@ Item {
             fill: parent
         }
         color: "black"
-        opacity: .65
+        opacity: Theme.colorScheme == Theme.LightOnDark  ? 0.65 : 0.9
     }
 
     Item {
@@ -60,20 +45,17 @@ Item {
 //                top: photoContainer.bottom - (Screen.primaryOrientation === Qt.LandscapeOrientation) ? height : 0
                 left: parent.left
             }
-            color: "black"
-            opacity: 0.3
-//            opacity: showBackground ? 0.3 : 0
+            color: Qt.rgba(0, 0, 0, textOpacity)
             visible: generic.showTextOnPhoto
-//                Behavior on opacity {
-//                    FadeAnimation {}
-//                }
+            Behavior on opacity {
+                FadeAnimation {}
+            }
 
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
                     photoTitle.visible = !photoTitle.visible
-                    titleRect.visible = photoTitle.visible
-                    showBroadcast.visible = photoTitle.visible
+                    titleRect.opacity = photoTitle.visible ? 1.0 : 0.0
                 }
             }
         }
@@ -81,7 +63,6 @@ Item {
         Label {
             id: photoTitle
             width: parent.width
-//            width: parent.width - hideButton.width
             anchors {
                 bottom: parent.bottom
 //                top: photoContainer.bottom - (Screen.primaryOrientation === Qt.LandscapeOrientation) ? height : 0
@@ -100,32 +81,35 @@ Item {
             visible: generic.showTextOnPhoto
         }
 
-//        IconButton {
-//            id: hideButton
-//            icon.source: Qt.resolvedUrl("images/icon-hide-show.svg")
-//            anchors {
-//                bottom: parent.bottom
-//                right: parent.right
-//            }
-
-//            onPressed: {
-//                photoTitle.visible = !photoTitle.visible
-//                titleRect.visible = photoTitle.visible
-//                showBroadcast.visible = photoTitle.visible
-//            }
-//        }
-
-        IconButton {
+        Rectangle {
             id: showBroadcast
-            icon.source: (site === "NOS") ? Qt.resolvedUrl("images/icon-nos.svg") : Qt.resolvedUrl("images/icon-the-guardian.svg")
+            height: 40
+            width: 120
             anchors {
-//                    bottom: photoContainer.top - (Screen.primaryOrientation === Qt.LandscapeOrientation) ? height : 0
-//                    top: page.isPortrait ? image.bottom : header.bottom
+                topMargin: showBroadcast.height
+                rightMargin: showBroadcast.height
                 top: parent.top
                 right: parent.right
             }
+            color: "transparent"
+//            color: Qt.rgba(0, 0, 0, 0)
 
-            onClicked: ExternalLinks.browse(link)
+            Image {
+                id: iconContainer
+                anchors {
+                    fill: parent
+                    centerIn: parent
+                }
+                fillMode: Image.PreserveAspectFit
+                source: (site === "NOS") ? Qt.resolvedUrl("images/icon-nos.svg") : Qt.resolvedUrl("images/icon-the-guardian.svg")
+            }
+
+            MouseArea {
+                anchors.fill: parent
+                onClicked: {
+                    ExternalLinks.browse(link)
+                }
+            }
         }
     }
 }

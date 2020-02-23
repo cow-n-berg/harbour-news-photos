@@ -33,6 +33,8 @@ ListItem {
 
         Label {
             id: categoryLabel
+//            width: parent.width
+            height: parent.height / 3
             anchors {
                 top: containerImage.bottom
                 horizontalCenter: parent.horizontalCenter
@@ -42,6 +44,7 @@ ListItem {
             color: Theme.secondaryColor
 
             text: title
+            wrapMode: Text.WordWrap
             truncationMode: TruncationMode.Fade
         }
     }

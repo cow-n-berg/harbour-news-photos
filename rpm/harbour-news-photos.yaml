@@ -1,6 +1,6 @@
 Name: harbour-news-photos
 Summary: News Photos
-Version: 1.1
+Version: 1.4
 Release: 1
 # The contents of the Group field should be one of the groups listed here:
 # https://github.com/mer-tools/spectacle/blob/master/data/GROUPS
@@ -13,7 +13,8 @@ License: LICENSE
 Sources:
 - '%{name}-%{version}.tar.bz2'
 Description: |
-  Shows a slide show of news photos from the website of Dutch broadcasting service NOS, "Nieuws in beeld"
+  Shows a slide show of news photos from the websites of The Guardian, and of
+  Dutch broadcasting service NOS, "Nieuws in beeld"
 Configure: none
 Builder: qmake5
 

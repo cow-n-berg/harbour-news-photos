@@ -22,7 +22,7 @@ Page {
     // Wait with making menu visible until mainPage is pushed
     Timer {
         id: visibleTimer
-        interval: 5000
+        interval: 3000
         running: false
         onTriggered: {
             menuColumn.visible = true
@@ -40,9 +40,10 @@ Page {
             id: menuColumn
             width: parent.width
             spacing: Theme.paddingLarge
+            visible : false
 
             PageHeader {
-                title: "Options"
+                title: qsTr("Options")
             }
 
             IconTextSwitch {
@@ -54,7 +55,7 @@ Page {
             }
             IconTextSwitch {
                 text: "The Guardian"
-                description: qsTr("Photo highlights of the day,<br/>change once a day typically")
+                description: qsTr("Photo highlights of the day, change once a day typically and not on Saturdays")
                 icon.source: Theme.colorScheme == 0  ? Qt.resolvedUrl("images/the-guardian.svg") : Qt.resolvedUrl("images/the-guardian-dark.svg")
                 checked: generic.showSiteGuardian
                 onClicked: generic.showSiteGuardian = !generic.showSiteGuardian
