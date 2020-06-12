@@ -10,11 +10,12 @@ ApplicationWindow
 {
     id: generic
 
-    property bool showSiteNOS          : Storage.get( "showSiteNOS", true)
-    property bool showSiteGuardian     : Storage.get( "showSiteGuardian", true)
-    property bool preferVerticalScroll : Storage.get( "preferVerticalScroll", false)
-    property bool showTextOnPhoto      : Storage.get( "showTextOnPhoto", true)
-    property bool coverShowListView    : Storage.get( "coverShowListView", true)
+    property bool showSiteNOS          : Storage.get( "showSiteNOS", true )
+    property bool showSiteGuardian     : Storage.get( "showSiteGuardian", true )
+    property bool preferVerticalScroll : Storage.get( "preferVerticalScroll", false )
+    property bool showTextOnPhoto      : Storage.get( "showTextOnPhoto", true )
+    property bool showPhotoNumber      : Storage.get( "showPhotoNumber", true )
+    property bool coverShowListView    : Storage.get( "coverShowListView", true )
 
     function xmlSiteUrl(showSiteNOS, showSiteGuardian) {
         var textShowNOS = (showSiteNOS) ? "true" : "false";
@@ -27,6 +28,7 @@ ApplicationWindow
         Storage.set( "showSiteGuardian"    , showSiteGuardian    );
         Storage.set( "preferVerticalScroll", preferVerticalScroll);
         Storage.set( "showTextOnPhoto"     , showTextOnPhoto     );
+        Storage.set( "showPhotoNumber"     , showPhotoNumber     );
         Storage.set( "coverShowListView"   , coverShowListView   );
     }
 
@@ -46,6 +48,7 @@ ApplicationWindow
         XmlRole { name: "description"; query: "description/string()"; }
         XmlRole { name: "source"; query: "source/string()"; }
         XmlRole { name: "site"; query: "site/string()"; }
+        XmlRole { name: "number"; query: "number/string()"; }
         XmlRole { name: "image"; query: "enclosure/@url/string()"; }
     }
 }

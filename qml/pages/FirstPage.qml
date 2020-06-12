@@ -75,6 +75,13 @@ Page {
                 onClicked: generic.showTextOnPhoto = !generic.showTextOnPhoto
             }
             IconTextSwitch {
+                text: qsTr("Show photo number in text")
+                description: qsTr("Number will be shown as e.g. 1/10")
+                icon.source: "image://theme/icon-m-new"
+                checked: generic.showPhotoNumber
+                onClicked: generic.showPhotoNumber = !generic.showPhotoNumber
+            }
+            IconTextSwitch {
                 text: qsTr("Show one photo on cover")
                 description: qsTr("Or show grid view of many photos")
                 icon.source: Theme.colorScheme == 0  ? Qt.resolvedUrl("images/icon-listview.svg") : Qt.resolvedUrl("images/icon-listview-dark.svg")

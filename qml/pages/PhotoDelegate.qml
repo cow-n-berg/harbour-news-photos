@@ -5,26 +5,51 @@ import "../scripts/ExternalLinks.js" as ExternalLinks
 Item {
     id: container
 
-    property bool showBackground: generic.showTextOnPhoto
-    property real textOpacity: 0.3
+    //property bool showBackground: generic.showTextOnPhoto
+    property int noneOpacity: 0
+    property int textOpacity: 1
+    property int fullOpacity: 2
+    property int showOpacity: generic.showTextOnPhoto ? textOpacity : noneOpacity
+
+    function toggleOpacity() {
+        if (generic.showTextOnPhoto) {
+            showOpacity++
+            if (showOpacity > fullOpacity)
+                showOpacity = noneOpacity
+            }
+        else {
+            showOpacity = noneOpacity
+        }
+    }
+
+    function rectOpacity() {
+        switch (showOpacity) {
+        case noneOpacity:
+            return 0.0
+        case textOpacity:
+            return 0.2
+        case fullOpacity:
+            return 1.0
+        }
+    }
 
     height: parent.height
     width: parent.width
 
     Rectangle {
         id: photoRect
-        anchors {
-            fill: parent
-        }
+        height: container.height
+        width: container.width
+//        border.color: "yellow"
+//        border.width: 1
         color: "black"
-        opacity: Theme.colorScheme == Theme.LightOnDark  ? 0.65 : 0.9
+        opacity: Theme.colorScheme == Theme.LightOnDark ? 0.65 : 0.9
     }
 
     Item {
         id: photoBox
-        anchors {
-            fill: parent
-        }
+        height: container.height
+        width: container.width
 
         Image {
             id: photoContainer
@@ -45,8 +70,8 @@ Item {
 //                top: photoContainer.bottom - (Screen.primaryOrientation === Qt.LandscapeOrientation) ? height : 0
                 left: parent.left
             }
-            color: Qt.rgba(0, 0, 0, textOpacity)
-            visible: generic.showTextOnPhoto
+            color: Qt.rgba(0, 0, 0, rectOpacity())
+
             Behavior on opacity {
                 FadeAnimation {}
             }
@@ -54,8 +79,9 @@ Item {
             MouseArea {
                 anchors.fill: parent
                 onClicked: {
-                    photoTitle.visible = !photoTitle.visible
-                    titleRect.opacity = photoTitle.visible ? 1.0 : 0.0
+                    toggleOpacity()
+                    photoTitle.visible = (showOpacity != noneOpacity)
+                    titleRect.opacity = rectOpacity()
                 }
             }
         }
@@ -73,12 +99,17 @@ Item {
                 return unescape(htmlText);
             }
 
-            text: plain(title + " - " + description + " - " + site + " - " + source)
+            property string titl: (title) ? title + " - " : ""
+            property string descr: (description) ? description + " - " : ""
+            property string nr: (showPhotoNumber) ? " " + number : ""
+            property string sourc: (source) ? " - " + source : ""
+
+            text: plain(titl + descr + site + nr + sourc )
             font.pixelSize: Theme.fontSizeSmall
             color: Theme.lightSecondaryColor
             wrapMode: Text.WordWrap
 //                visible: (Screen.primaryOrientation === Qt.LandscapeOrientation) ? generic.showTextOnPhoto : true
-            visible: generic.showTextOnPhoto
+            visible: (showOpacity != noneOpacity)
         }
 
         Rectangle {
@@ -92,7 +123,6 @@ Item {
                 right: parent.right
             }
             color: "transparent"
-//            color: Qt.rgba(0, 0, 0, 0)
 
             Image {
                 id: iconContainer

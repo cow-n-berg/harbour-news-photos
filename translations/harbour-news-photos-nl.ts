@@ -40,6 +40,16 @@
     </message>
     <message>
         <location filename="../qml/pages/FirstPage.qml" line="78"/>
+        <source>Show photo number in text</source>
+        <translation type="unfinished">Toon het nummer van de foto</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/FirstPage.qml" line="79"/>
+        <source>Number will be shown as e.g. 1/10</source>
+        <translation type="unfinished">Fotonummer wordt getoond als bijv. 1/10</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/FirstPage.qml" line="78"/>
         <source>Show one photo on cover</source>
         <translation>Toon &eacute;&eacute;n foto op de cover</translation>
     </message>

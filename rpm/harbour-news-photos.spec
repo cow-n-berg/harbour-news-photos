@@ -9,8 +9,8 @@ Name:       harbour-news-photos
 # << macros
 
 Summary:    News Photos
-Version:    1.4
-Release:    1
+Version:    1.5
+Release:    2
 Group:      Qt/Qt
 License:    LICENSE
 BuildArch:  noarch
@@ -19,7 +19,6 @@ Source0:    %{name}-%{version}.tar.bz2
 Source100:  harbour-news-photos.yaml
 Requires:   sailfishsilica-qt5 >= 0.10.9
 Requires:   libsailfishapp-launcher
-Requires:   qt5-qtdeclarative-import-xmllistmodel
 BuildRequires:  pkgconfig(sailfishapp) >= 1.0.3
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Qml)
@@ -27,8 +26,9 @@ BuildRequires:  pkgconfig(Qt5Quick)
 BuildRequires:  desktop-file-utils
 
 %description
-Shows a slide show of news photos from the website of Dutch broadcasting service NOS, "Nieuws in beeld".
-Also from The Guardian, "Photo highlights of the day"
+Shows a slide show of news photos from the websites of The Guardian, and of
+Dutch broadcasting service NOS, "Nieuws in beeld"
+
 
 %prep
 %setup -q -n %{name}-%{version}
@@ -40,7 +40,7 @@ Also from The Guardian, "Photo highlights of the day"
 # >> build pre
 # << build pre
 
-%qmake5
+%qmake5 
 
 make %{?_smp_mflags}
 
