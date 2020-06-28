@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<svg
+   xmlns:dc="http://purl.org/dc/elements/1.1/"
+   xmlns:cc="http://creativecommons.org/ns#"
+   xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+   xmlns:svg="http://www.w3.org/2000/svg"
+   xmlns="http://www.w3.org/2000/svg"
+   xmlns:sodipodi="http://sodipodi.sourceforge.net/DTD/sodipodi-0.dtd"
+   xmlns:inkscape="http://www.inkscape.org/namespaces/inkscape"
+   aria-labelledby="title-48411b20-2939-406c-9ebc-3aea66ad7d64"
+   width="113"
+   height="23"
+   viewBox="0 0 113 23"
+   fill="none"
+   role="img"
+   version="1.1"
+   id="svg5"
+   sodipodi:docname="spiegel-dark.svg"
+   inkscape:version="0.92.4 (5da689c313, 2019-01-14)">
+  <metadata
+     id="metadata11">
+    <rdf:RDF>
+      <cc:Work
+         rdf:about="">
+        <dc:format>image/svg+xml</dc:format>
+        <dc:type
+           rdf:resource="http://purl.org/dc/dcmitype/StillImage" />
+        <dc:title>Spiegel</dc:title>
+      </cc:Work>
+    </rdf:RDF>
+  </metadata>
+  <defs
+     id="defs9" />
+  <sodipodi:namedview
+     pagecolor="#ffffff"
+     bordercolor="#666666"
+     borderopacity="1"
+     objecttolerance="10"
+     gridtolerance="10"
+     guidetolerance="10"
+     inkscape:pageopacity="0"
+     inkscape:pageshadow="2"
+     inkscape:window-width="1821"
+     inkscape:window-height="1051"
+     id="namedview7"
+     showgrid="false"
+     inkscape:zoom="3"
+     inkscape:cx="56.5"
+     inkscape:cy="11.5"
+     inkscape:window-x="90"
+     inkscape:window-y="-9"
+     inkscape:window-maximized="1"
+     inkscape:current-layer="svg5" />
+  <title
+     id="title-48411b20-2939-406c-9ebc-3aea66ad7d64">Spiegel</title>
+  <path
+     d="M22.956 9.047V3.833h5.233v5.214h-5.233zm9.696 1.38V2.453C32.652 1.073 31.575 0 30.19 0H16.646v3.833h1.847v15.334h-1.847V23h8.003v-3.833h-1.693V12.88h7.234c1.385 0 2.462-1.073 2.462-2.453zM40.501 19.167V3.833h1.847V0h-8.003v3.833h1.847v15.334h-1.847V23h8.003v-3.833h-1.847zM55.738 14.873v4.294h-5.233V12.88h6.926V9.047h-6.926V3.833h5.233v3.22h4.463V0H44.35v3.833h1.693v15.334h-1.693V23h15.852v-8.127h-4.463zM68.358 9.047v3.833h3.54v6.287h-5.233V3.833h5.233v3.22h4.617v-4.6c0-1.38-1.077-2.453-2.462-2.453h-9.234c-.616 0-1.232.307-1.54.613-.461.46-.923 1.074-.923 1.84v18.094c0 .766.308 1.38.923 1.84.462.46 1.078.613 1.693.613h11.543V9.047h-8.157zM90.059 14.873v4.294h-5.233V12.88h6.926V9.047h-6.926V3.833h5.233v3.22h4.463V0H78.67v3.833h1.693v15.334H78.67V23h15.852v-8.127h-4.463zM108.066 14.873v4.294h-5.078V3.833h1.846V0h-8.157v3.833h1.847v15.334h-1.847V23h15.853v-8.127h-4.464zM14.645 20.685V9.107H5.103V3.86h5.079v3.242h4.617V2.47C14.8.988 13.414 0 12.03 0h-9.08C1.562 0 .485 1.08.485 2.47v10.496h9.542v6.33H4.95v-4.323H.486v5.557c0 1.39 1.077 2.47 2.462 2.47h9.08c1.417 0 2.617-.926 2.617-2.315z"
+     fill="#fff"
+     id="path3"
+     style="fill:#949494;fill-opacity:1" />
+</svg>

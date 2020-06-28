@@ -19,6 +19,16 @@
         <translation type="unfinished"></translation>
     </message>
     <message>
+        <location filename="../qml/pages/FirstPage.qml" line="59"/>
+        <source>Bilder des Tages, one photo per day and not on Sundays</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/FirstPage.qml" line="60"/>
+        <source>Number of photos from Der Spiegel</source>
+        <translation type="unfinished"></translation>
+    </message>
+    <message>
         <location filename="../qml/pages/FirstPage.qml" line="64"/>
         <source>Vertical scroll</source>
         <translation type="unfinished"></translation>

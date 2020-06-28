@@ -9,8 +9,8 @@ Name:       harbour-news-photos
 # << macros
 
 Summary:    News Photos
-Version:    1.5
-Release:    2
+Version:    1.6
+Release:    0
 Group:      Qt/Qt
 License:    LICENSE
 BuildArch:  noarch
@@ -19,6 +19,7 @@ Source0:    %{name}-%{version}.tar.bz2
 Source100:  harbour-news-photos.yaml
 Requires:   sailfishsilica-qt5 >= 0.10.9
 Requires:   libsailfishapp-launcher
+Requires:   qt5-qtdeclarative-import-xmllistmodel
 BuildRequires:  pkgconfig(sailfishapp) >= 1.0.3
 BuildRequires:  pkgconfig(Qt5Core)
 BuildRequires:  pkgconfig(Qt5Qml)

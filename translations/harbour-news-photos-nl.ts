@@ -19,6 +19,16 @@
         <translation>De beste foto&apos;s van de dag, meestal eens per dag ververst en niet op zaterdag</translation>
     </message>
     <message>
+        <location filename="../qml/pages/FirstPage.qml" line="59"/>
+        <source>Bilder des Tages, one photo per day and not on Sundays</source>
+        <translation>Bilder des Tages, een foto per dag en niet op zondag</translation>
+    </message>
+    <message>
+        <location filename="../qml/pages/FirstPage.qml" line="60"/>
+        <source>Aantal foto&apos;s van Der Spiegel</source>
+        <translation></translation>
+    </message>
+    <message>
         <location filename="../qml/pages/FirstPage.qml" line="64"/>
         <source>Vertical scroll</source>
         <translation>Verticaal scrollen</translation>

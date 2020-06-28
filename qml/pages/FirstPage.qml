@@ -6,6 +6,9 @@ Page {
     id: firstPage
     allowedOrientations: Orientation.All
 
+    property bool derSpiegel: (generic.showSiteSpiegel > 0)
+
+
     // First Page, this is the category page; this page cointains all categories and gets pushed as initial page.
     // After the app starts, it automatically pushes the mainPage from here.
 
@@ -31,7 +34,7 @@ Page {
     SilicaFlickable {
         id: menuPage
         anchors.fill: parent
-        contentWidth: parent.width;
+        contentWidth: parent.width
         contentHeight: menuColumn.height + Theme.paddingLarge
 
         flickableDirection: Flickable.VerticalFlick
@@ -46,9 +49,18 @@ Page {
                 title: qsTr("Options")
             }
 
+//            Rectangle {
+//                width: parent.width
+//                Label {
+//                    width: parent.width
+//                    font.pixelSize: Theme.fontSizeSmall
+//                    text: xmlSiteUrl(generic.showSiteNOS, generic.showSiteGuardian, sliderSpiegel.value)
+//                    wrapMode: Text.WordWrap
+//                }
+//            }
             IconTextSwitch {
                 text: "NOS Nieuws in beeld"
-                description: qsTr("New images at around 14:00 and 19:00,<br/>texts are Dutch only.")
+                description: qsTr("New images at around 14:00 and 19:00, texts are Dutch only.")
                 icon.source: Theme.colorScheme == 0  ? Qt.resolvedUrl("images/nos.svg") : Qt.resolvedUrl("images/nos-dark.svg")
                 checked: generic.showSiteNOS
                 onClicked: generic.showSiteNOS = !generic.showSiteNOS
@@ -59,6 +71,23 @@ Page {
                 icon.source: Theme.colorScheme == 0  ? Qt.resolvedUrl("images/the-guardian.svg") : Qt.resolvedUrl("images/the-guardian-dark.svg")
                 checked: generic.showSiteGuardian
                 onClicked: generic.showSiteGuardian = !generic.showSiteGuardian
+            }
+            IconTextSwitch {
+                text: "Der Spiegel"
+                description: qsTr("Bilder des Tages, one photo per day and not on Sundays")
+                icon.source: Theme.colorScheme == 0  ? Qt.resolvedUrl("images/spiegel.svg") : Qt.resolvedUrl("images/spiegel-dark.svg")
+                checked: derSpiegel
+                onClicked: derSpiegel = !derSpiegel
+            }
+            Slider {
+                id: sliderSpiegel
+                value: generic.showSiteSpiegel
+                minimumValue:0
+                maximumValue:20
+                stepSize: 1
+                width: parent.width
+                valueText: value.toString()
+                label: "Number of photos from Der Spiegel"
             }
             IconTextSwitch {
                 text: qsTr("Vertical scroll")
@@ -96,8 +125,14 @@ Page {
                 }
                 Button {
                     text: qsTr("Show photos")
-                    enabled: (generic.showSiteNOS || generic.showSiteGuardian)
+                    enabled: (generic.showSiteNOS || generic.showSiteGuardian || (derSpiegel && generic.showSiteSpiegel > 0))
                     onClicked: {
+                        if (derSpiegel) {
+                            generic.showSiteSpiegel = sliderSpiegel.value
+                        }
+                        else {
+                            generic.showSiteSpiegel = 0
+                        }
                         generic.saveSettings()
                         feedListModel.reload()
                         pageStack.push(mainPage)

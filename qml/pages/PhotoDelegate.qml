@@ -131,7 +131,22 @@ Item {
                     centerIn: parent
                 }
                 fillMode: Image.PreserveAspectFit
-                source: (site === "NOS") ? Qt.resolvedUrl("images/icon-nos.svg") : Qt.resolvedUrl("images/icon-the-guardian.svg")
+
+                function showLogo( currentSite ) {
+                    var url
+                    if (site === "NOS") {
+                        url = Qt.resolvedUrl("images/icon-nos.svg")
+                    }
+                    else if (site === "The Guardian") {
+                        url = Qt.resolvedUrl("images/icon-the-guardian.svg")
+                    }
+                    else {
+                        url = Qt.resolvedUrl("images/icon-spiegel.svg")
+                    }
+                    return url
+                }
+
+                source: showLogo( site )
             }
 
             MouseArea {

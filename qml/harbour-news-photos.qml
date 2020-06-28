@@ -12,24 +12,29 @@ ApplicationWindow
 
     property bool showSiteNOS          : Storage.get( "showSiteNOS", true )
     property bool showSiteGuardian     : Storage.get( "showSiteGuardian", true )
+    property int showSiteSpiegel       : Storage.get( "showSiteSpiegel", 1 )
     property bool preferVerticalScroll : Storage.get( "preferVerticalScroll", false )
     property bool showTextOnPhoto      : Storage.get( "showTextOnPhoto", true )
     property bool showPhotoNumber      : Storage.get( "showPhotoNumber", true )
     property bool coverShowListView    : Storage.get( "coverShowListView", true )
 
-    function xmlSiteUrl(showSiteNOS, showSiteGuardian) {
-        var textShowNOS = (showSiteNOS) ? "true" : "false";
-        var textShowGuardian = (showSiteGuardian) ? "true" : "false";
-        return "https://www.escaperoomgetoutofhere.nl/specials/news-photos.php?nos=" + textShowNOS + "&guardian=" + textShowGuardian;
+    function xmlSiteUrl(showSiteNOS, showSiteGuardian, showSiteSpiegel) {
+        var textShowNOS = (showSiteNOS) ? "true" : "false"
+        var textShowGuardian = (showSiteGuardian) ? "true" : "false"
+        var textShowSpiegel = showSiteSpiegel.toString()
+        var url = "https://www.escaperoomgetoutofhere.nl/specials/news-photos.php?nos=" + textShowNOS
+        url += "&guardian=" + textShowGuardian + "&spiegel=" + textShowSpiegel
+        return url;
     }
 
     function saveSettings() {
-        Storage.set( "showSiteNOS"         , showSiteNOS         );
-        Storage.set( "showSiteGuardian"    , showSiteGuardian    );
-        Storage.set( "preferVerticalScroll", preferVerticalScroll);
-        Storage.set( "showTextOnPhoto"     , showTextOnPhoto     );
-        Storage.set( "showPhotoNumber"     , showPhotoNumber     );
-        Storage.set( "coverShowListView"   , coverShowListView   );
+        Storage.set( "showSiteNOS"         , showSiteNOS         )
+        Storage.set( "showSiteGuardian"    , showSiteGuardian    )
+        Storage.set( "showSiteSpiegel"     , showSiteSpiegel     )
+        Storage.set( "preferVerticalScroll", preferVerticalScroll)
+        Storage.set( "showTextOnPhoto"     , showTextOnPhoto     )
+        Storage.set( "showPhotoNumber"     , showPhotoNumber     )
+        Storage.set( "coverShowListView"   , coverShowListView   )
     }
 
     initialPage: Component { FirstPage { } }
@@ -38,7 +43,7 @@ ApplicationWindow
 
     XmlListModel {
         id: feedListModel
-        source: xmlSiteUrl(showSiteNOS, showSiteGuardian)
+        source: xmlSiteUrl(showSiteNOS, showSiteGuardian, showSiteSpiegel)
         query: "/rss/channel/item"
 
         namespaceDeclarations: "declare namespace dc='http://purl.org/dc/elements/1.1/'; declare namespace content='http://purl.org/rss/1.0/modules/content/';"
