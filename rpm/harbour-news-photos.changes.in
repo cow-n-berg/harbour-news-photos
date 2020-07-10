@@ -12,6 +12,9 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
+* Sun Jul 05 2020 Rob Kouwenberg <sailfish@cow-n-berg.nl> 1.7-0
+- Introduced ZoomableImage by Damien Tardy-Panis/Oleg Linkin
+
 * Mon Jun 15 2020 Rob Kouwenberg <sailfish@cow-n-berg.nl> 1.6-0
 - Added photos from Der Spiegel
 - Supporting changes on Guardian website

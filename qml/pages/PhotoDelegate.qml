@@ -1,6 +1,7 @@
 import QtQuick 2.0
 import Sailfish.Silica 1.0
 import "../scripts/ExternalLinks.js" as ExternalLinks
+import "../common"
 
 Item {
     id: container
@@ -51,14 +52,15 @@ Item {
         height: container.height
         width: container.width
 
-        Image {
+        ZoomableImage {
             id: photoContainer
             anchors {
                 fill: parent
                 centerIn: parent
             }
-            fillMode: Image.PreserveAspectFit
-            source: image
+//            fillMode: Image.PreserveAspectFit
+//            source: image
+            imagePath: image
         }
 
         Rectangle {
