@@ -117,6 +117,13 @@ Page {
                 checked: generic.coverShowListView
                 onClicked: generic.coverShowListView = !generic.coverShowListView
             }
+            IconTextSwitch {
+                text: qsTr("Show app name on cover")
+                description: qsTr("'News Photos' for better recognition of app tiles")
+                icon.source: "image://theme/icon-m-about"
+                checked: generic.coverShowAppName
+                onClicked: generic.coverShowAppName = !generic.coverShowAppName
+            }
 
             ButtonLayout {
                 Button {

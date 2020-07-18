@@ -10,7 +10,7 @@ ApplicationWindow
 {
     id: generic
 
-    property string version            : "1.7-0"
+    property string version            : "1.8-0"
     property bool showSiteNOS          : Storage.get( "showSiteNOS", true )
     property bool showSiteGuardian     : Storage.get( "showSiteGuardian", true )
     property int showSiteSpiegel       : Storage.get( "showSiteSpiegel", 1 )
@@ -18,6 +18,7 @@ ApplicationWindow
     property bool showTextOnPhoto      : Storage.get( "showTextOnPhoto", true )
     property bool showPhotoNumber      : Storage.get( "showPhotoNumber", true )
     property bool coverShowListView    : Storage.get( "coverShowListView", true )
+    property bool coverShowAppName     : Storage.get( "coverShowAppName", false )
 
     function xmlSiteUrl(showSiteNOS, showSiteGuardian, showSiteSpiegel) {
         var textShowNOS = (showSiteNOS) ? "true" : "false"
@@ -36,6 +37,7 @@ ApplicationWindow
         Storage.set( "showTextOnPhoto"     , showTextOnPhoto     )
         Storage.set( "showPhotoNumber"     , showPhotoNumber     )
         Storage.set( "coverShowListView"   , coverShowListView   )
+        Storage.set( "coverShowAppName"    , coverShowAppName   )
     }
 
     initialPage: Component { FirstPage { } }

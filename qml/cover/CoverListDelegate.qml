@@ -13,10 +13,26 @@ ListItem {
 
     // Put contents in a 'box'
     Item {
+        id: photoAndTitle
         anchors {
             fill: parent
-            margins: Theme.paddingMedium
+            leftMargin: Theme.paddingMedium
+            rightMargin: Theme.paddingMedium
             verticalCenter: parent.verticalCenter
+        }
+
+        Label {
+            id: appName
+            anchors {
+                top: parent.top
+                topMargin: Theme.paddingMedium
+                horizontalCenter: parent.horizontalCenter
+            }
+
+            font.pixelSize: Theme.fontSizeMedium / 1.2
+            color: Theme.secondaryHighlightColor
+
+            text: (coverShowAppName) ? 'News Photos' : ''
         }
 
         Image {
@@ -24,7 +40,7 @@ ListItem {
             width: parent.width
             anchors {
                 top: parent.top
-                topMargin: (showSiteNOS) ? parent.height * 0.65 : parent.height * 0.45
+                topMargin: (showSiteNOS) ? parent.height * 0.75 : parent.height * 0.65
                 horizontalCenter: parent.horizontalCenter
             }
 
