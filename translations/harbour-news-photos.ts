@@ -75,7 +75,7 @@
     </message>
     <message>
         <location filename="../qml/pages/FirstPage.qml" line="91"/>
-        <source>Show photos</source>
+        <source>Save and show photos</source>
         <translation type="unfinished"></translation>
     </message>
 </context>

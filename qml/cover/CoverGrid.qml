@@ -39,7 +39,7 @@ CoverBackground {
         }
 
         font.pixelSize: Theme.fontSizeLarge
-        color: Theme.primaryColor
+        color: Theme.secondaryColor
 
         text: (coverShowAppName) ? 'News Photos' : ''
     }
@@ -50,7 +50,7 @@ CoverBackground {
             bottom: parent.bottom
             horizontalCenter: parent.horizontalCenter
         }
-        height: labelRect.height
+        height: appName2.height * 1.5
         width: parent.width
         color: "black"
         opacity: 0.4

@@ -31,6 +31,7 @@ Page {
             menuColumn.visible = true
         }
     }
+
     SilicaFlickable {
         id: menuPage
         anchors.fill: parent
@@ -38,6 +39,14 @@ Page {
         contentHeight: menuColumn.height + Theme.paddingLarge
 
         flickableDirection: Flickable.VerticalFlick
+
+        PullDownMenu {
+            id: pullDownMenu
+            MenuItem {
+                text: qsTr("About")
+                onClicked: pageStack.push(Qt.resolvedUrl("AboutPage.qml"))
+            }
+        }
 
         Column {
             id: menuColumn
@@ -127,11 +136,7 @@ Page {
 
             ButtonLayout {
                 Button {
-                    text: qsTr("About")
-                    onClicked: pageStack.push(Qt.resolvedUrl("AboutPage.qml"))
-                }
-                Button {
-                    text: qsTr("Show photos")
+                    text: qsTr("Save and show photos")
                     enabled: (generic.showSiteNOS || generic.showSiteGuardian || (derSpiegel && generic.showSiteSpiegel > 0))
                     onClicked: {
                         if (derSpiegel) {

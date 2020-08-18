@@ -75,8 +75,8 @@
     </message>
     <message>
         <location filename="../qml/pages/FirstPage.qml" line="91"/>
-        <source>Show photos</source>
-        <translation>Toon foto&apos;s</translation>
+        <source>Save and show photos</source>
+        <translation>Sla op en toon foto&apos;s</translation>
     </message>
 </context>
 <context>
