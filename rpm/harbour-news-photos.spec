@@ -9,7 +9,7 @@ Name:       harbour-news-photos
 # << macros
 
 Summary:    News Photos
-Version:    1.8
+Version:    1.9
 Release:    0
 Group:      Qt/Qt
 License:    LICENSE

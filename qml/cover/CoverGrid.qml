@@ -19,10 +19,48 @@ CoverBackground {
         }
     }
 
+    Rectangle {
+        id: labelRect
+        anchors {
+            verticalCenter: parent.verticalCenter
+            horizontalCenter: parent.horizontalCenter
+        }
+        height: appName2.height * 1.5
+        width: parent.width
+        color: "black"
+        opacity: (coverShowAppName) ? 0.4 : 0
+    }
+
+    Label {
+        id: appName2
+        anchors {
+            verticalCenter: parent.verticalCenter
+            horizontalCenter: parent.horizontalCenter
+        }
+
+        font.pixelSize: Theme.fontSizeLarge
+        color: Theme.primaryColor
+
+        text: (coverShowAppName) ? 'News Photos' : ''
+    }
+
+    Rectangle {
+        id: actionRect
+        anchors {
+            bottom: parent.bottom
+            horizontalCenter: parent.horizontalCenter
+        }
+        height: labelRect.height
+        width: parent.width
+        color: "black"
+        opacity: 0.4
+    }
+
     CoverActionList {
         id: coverAction
 
         CoverAction {
+            id: renewList
 //            iconSource: Theme.colorScheme == 0  ? Qt.resolvedUrl("dark-cover-camera.png") : Qt.resolvedUrl("light-cover-camera.png")
             iconSource: Qt.resolvedUrl("dark-cover-camera.png")
             onTriggered: {

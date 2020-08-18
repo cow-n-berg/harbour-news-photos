@@ -10,7 +10,7 @@ ApplicationWindow
 {
     id: generic
 
-    property string version            : "1.8-0"
+    property string version            : "1.9-0"
     property bool showSiteNOS          : Storage.get( "showSiteNOS", true )
     property bool showSiteGuardian     : Storage.get( "showSiteGuardian", true )
     property int showSiteSpiegel       : Storage.get( "showSiteSpiegel", 1 )
@@ -24,8 +24,9 @@ ApplicationWindow
         var textShowNOS = (showSiteNOS) ? "true" : "false"
         var textShowGuardian = (showSiteGuardian) ? "true" : "false"
         var textShowSpiegel = showSiteSpiegel.toString()
-        var url = "https://www.escaperoomgetoutofhere.nl/specials/news-photos.php?nos=" + textShowNOS
-        url += "&guardian=" + textShowGuardian + "&spiegel=" + textShowSpiegel
+//        var site = "https://www.escaperoomgetoutofhere.nl/specials/news-photos.php"
+        var site = "http://www.cow-n-berg.nl/sailfishos/news-photos.php"
+        var url = site + "?nos=" + textShowNOS + "&guardian=" + textShowGuardian + "&spiegel=" + textShowSpiegel
         return url;
     }
 
