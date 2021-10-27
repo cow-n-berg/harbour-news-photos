@@ -1,6 +1,6 @@
 Name: harbour-news-photos
 Summary: News Photos
-Version: 1.9
+Version: 2.0
 Release: 0
 # The contents of the Group field should be one of the groups listed here:
 # https://github.com/mer-tools/spectacle/blob/master/data/GROUPS
@@ -34,6 +34,7 @@ PkgConfigBR:
 Requires:
   - sailfishsilica-qt5 >= 0.10.9
   - libsailfishapp-launcher
+  - qt5-qtdeclarative-import-xmllistmodel
 
 # All installed files
 Files:

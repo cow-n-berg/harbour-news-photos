@@ -90,11 +90,11 @@ Item {
 
         Label {
             id: photoTitle
-            width: parent.width
+            width: parent.width - Theme.horizontalPageMargin
             anchors {
                 bottom: parent.bottom
 //                top: photoContainer.bottom - (Screen.primaryOrientation === Qt.LandscapeOrientation) ? height : 0
-                left: parent.left
+                horizontalCenter: parent.horizontalCenter
             }
 
             function plain( htmlText ) {
@@ -136,8 +136,8 @@ Item {
 
                 function showLogo( currentSite ) {
                     var url
-                    if (site === "NOS") {
-                        url = Qt.resolvedUrl("images/icon-nos.svg")
+                    if (site === "de Volkskrant") {
+                        url = Qt.resolvedUrl("images/icon-volkskrant.svg")
                     }
                     else if (site === "The Guardian") {
                         url = Qt.resolvedUrl("images/icon-the-guardian.svg")

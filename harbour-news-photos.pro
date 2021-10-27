@@ -19,7 +19,7 @@ DISTFILES += qml/harbour-news-photos.qml \
     qml/cover/CoverPage.qml \
     qml/pages/AboutPage.qml \
     qml/pages/PhotoDelegate.qml \
-    qml/pages/FirstPage.qml \
+    qml/pages/PhotoPage.qml \
     qml/scripts/ExternalLinks.js \
     qml/scripts/Storage.js \
     rpm/harbour-news-photos.changes.in \

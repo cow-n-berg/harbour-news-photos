@@ -40,7 +40,7 @@ ListItem {
             width: parent.width
             anchors {
                 top: parent.top
-                topMargin: (showSiteNOS) ? parent.height * 0.75 : parent.height * 0.65
+                topMargin: (showSiteVolkskrant) ? parent.height * 0.75 : parent.height * 0.65
                 horizontalCenter: parent.horizontalCenter
             }
 

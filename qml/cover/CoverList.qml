@@ -21,6 +21,10 @@ CoverBackground {
             iconSource: Theme.colorScheme == 0  ? Qt.resolvedUrl("dark-cover-camera.png") : Qt.resolvedUrl("light-cover-camera.png")
             onTriggered: {
                 feedListModel.reload()
+                console.log( 'Cover action reload' )
+
+                generic.activate()
+
             }
         }
     }

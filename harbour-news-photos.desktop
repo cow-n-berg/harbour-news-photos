@@ -5,3 +5,8 @@ Icon=harbour-news-photos
 Exec=sailfish-qml harbour-news-photos
 Name=News Photos
 Name[nl]=Nieuwsfoto's
+
+[X-HarbourBackup]
+BackupPathList=.local/share/harbour-news-photos/
+BackupConfigList=/apps/harbour-news-photos/
+

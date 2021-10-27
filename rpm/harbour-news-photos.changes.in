@@ -12,6 +12,18 @@
 # * date Author's Name <author's email> version-release
 # - Summary of changes
 
+* Sat Oct 09 2021 Rob Kouwenberg <sailfish@cow-n-berg.nl> 2.2-0
+- Horizontal margin for caption, as X10ii has rounded edges
+
+* Tue Jun 01 2021 Rob Kouwenberg <sailfish@cow-n-berg.nl> 2.1-0
+- NOS no longer functional, de Volkskrant instead
+
+* Sat Mar 13 2021 Rob Kouwenberg <sailfish@cow-n-berg.nl> 2.0-0
+- Compatibility with HarbourBackup
+
+* Sat Aug 18 2020 Rob Kouwenberg <sailfish@cow-n-berg.nl> 1.9-2
+- Added ViewPlaceholder
+
 * Tue Aug 18 2020 Rob Kouwenberg <sailfish@cow-n-berg.nl> 1.9-1
 - "News Photos" on app cover also in GridView
 - New server address

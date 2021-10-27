@@ -65,6 +65,7 @@ CoverBackground {
             iconSource: Qt.resolvedUrl("dark-cover-camera.png")
             onTriggered: {
                 feedListModel.reload()
+                generic.activate();
             }
         }
     }

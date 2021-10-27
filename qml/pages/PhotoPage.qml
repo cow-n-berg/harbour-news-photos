@@ -1,11 +1,11 @@
 import QtQuick 2.0
-import QtQuick.XmlListModel 2.0
 import Sailfish.Silica 1.0
 
 Page {
     id: firstPage
     allowedOrientations: Orientation.All
 
+    property bool deVolkskrant: (generic.showSiteVolkskrant > 0)
     property bool derSpiegel: (generic.showSiteSpiegel > 0)
 
 
@@ -58,33 +58,35 @@ Page {
                 title: qsTr("Options")
             }
 
-//            Rectangle {
-//                width: parent.width
-//                Label {
-//                    width: parent.width
-//                    font.pixelSize: Theme.fontSizeSmall
-//                    text: xmlSiteUrl(generic.showSiteNOS, generic.showSiteGuardian, sliderSpiegel.value)
-//                    wrapMode: Text.WordWrap
-//                }
-//            }
-            IconTextSwitch {
-                text: "NOS Nieuws in beeld"
-                description: qsTr("New images at around 14:00 and 19:00, texts are Dutch only.")
-                icon.source: Theme.colorScheme == 0  ? Qt.resolvedUrl("images/nos.svg") : Qt.resolvedUrl("images/nos-dark.svg")
-                checked: generic.showSiteNOS
-                onClicked: generic.showSiteNOS = !generic.showSiteNOS
-            }
             IconTextSwitch {
                 text: "The Guardian"
                 description: qsTr("Photo highlights of the day, change once a day typically and not on Saturdays")
-                icon.source: Theme.colorScheme == 0  ? Qt.resolvedUrl("images/the-guardian.svg") : Qt.resolvedUrl("images/the-guardian-dark.svg")
+                icon.source: Theme.colorScheme == Theme.LightOnDark ? Qt.resolvedUrl("images/the-guardian.svg") : Qt.resolvedUrl("images/the-guardian-dark.svg")
                 checked: generic.showSiteGuardian
                 onClicked: generic.showSiteGuardian = !generic.showSiteGuardian
             }
             IconTextSwitch {
+                text: "de Volkskrant"
+                description: qsTr("Photo specials. Texts are Dutch only.")
+//                icon.source: Theme.colorScheme == 0  ? Qt.resolvedUrl("images/nos.svg") : Qt.resolvedUrl("images/nos-dark.svg")
+                icon.source: Theme.colorScheme == Theme.LightOnDark ? Qt.resolvedUrl("images/de-volkskrant.svg") : Qt.resolvedUrl("images/de-volkskrant-dark.svg")
+                checked: deVolkskrant
+                onClicked: deVolkskrant = !deVolkskrant
+            }
+            Slider {
+                id: sliderVolkskrant
+                value: generic.showSiteVolkskrant
+                minimumValue:0
+                maximumValue:7
+                stepSize: 1
+                width: parent.width
+                valueText: value.toString()
+                label: "Number of photos from de Volkskrant"
+            }
+            IconTextSwitch {
                 text: "Der Spiegel"
                 description: qsTr("Bilder des Tages, one photo per day and not on Sundays")
-                icon.source: Theme.colorScheme == 0  ? Qt.resolvedUrl("images/spiegel.svg") : Qt.resolvedUrl("images/spiegel-dark.svg")
+                icon.source: Theme.colorScheme == Theme.LightOnDark ? Qt.resolvedUrl("images/spiegel.svg") : Qt.resolvedUrl("images/spiegel-dark.svg")
                 checked: derSpiegel
                 onClicked: derSpiegel = !derSpiegel
             }
@@ -92,7 +94,7 @@ Page {
                 id: sliderSpiegel
                 value: generic.showSiteSpiegel
                 minimumValue:0
-                maximumValue:20
+                maximumValue:7
                 stepSize: 1
                 width: parent.width
                 valueText: value.toString()
@@ -137,8 +139,14 @@ Page {
             ButtonLayout {
                 Button {
                     text: qsTr("Save and show photos")
-                    enabled: (generic.showSiteNOS || generic.showSiteGuardian || (derSpiegel && generic.showSiteSpiegel > 0))
+                    enabled: (generic.showSiteVolkskrant || generic.showSiteGuardian || (derSpiegel && generic.showSiteSpiegel > 0))
                     onClicked: {
+                        if (deVolkskrant) {
+                            generic.showSiteVolkskrant = sliderVolkskrant.value
+                        }
+                        else {
+                            generic.showSiteVolkskrant = 0
+                        }
                         if (derSpiegel) {
                             generic.showSiteSpiegel = sliderSpiegel.value
                         }
@@ -164,6 +172,14 @@ Page {
             width: parent.width
             height: parent.height
             orientation : (generic.preferVerticalScroll) ? Qt.Vertical : Qt.Horizontal
+
+			ViewPlaceholder {
+				id: placeh
+				enabled: feedListModel.count === 0
+	//            enabled: (!feedListModel.populated || feedListModel.count === 0) || root.deletingItems
+				text: "Waiting for photos to download"
+				hintText: "If nothing happens, please report"
+			}
 
             // Link to feedListModel
             model: feedListModel
