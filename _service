@@ -2,6 +2,6 @@
     <service name="tar_git">
     <param name="url">https://github.com/cow-n-berg/harbour-news-photos</param>
     <param name="branch">master</param>
-    <param name="revision"></param>
+    <param name="revision">2.2.1</param>
     </service>
 </services>
