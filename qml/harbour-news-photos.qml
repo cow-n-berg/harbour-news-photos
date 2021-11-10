@@ -10,7 +10,7 @@ ApplicationWindow
 {
     id: generic
 
-    property string version            : "2.1"
+    property string version            : "2.4"
     property int  showSiteVolkskrant   : Storage.get( "showSiteVolkskrant", 1 )
     property bool showSiteGuardian     : Storage.get( "showSiteGuardian", true )
     property int  showSiteSpiegel      : Storage.get( "showSiteSpiegel", 1 )
